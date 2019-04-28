@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Betting.jnlp">
+  <information>
+    <title>Betting</title>
+    <vendor>Ishan Randika</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Betting.jar" size="1208777" download="eager" />
+    <jar href="lib\RegEx_Simulator.jar" size="22213" download="eager" />
+    <jar href="lib\com.lowagie.text-2.1.7.jar" size="1782376" download="eager" />
+    <jar href="lib\commons-beanutils-1.8.3.jar" size="232019" download="eager" />
+    <jar href="lib\commons-codec-1.10.jar" size="284184" download="eager" />
+    <jar href="lib\commons-collections-3.2.1-1.0.0.jar" size="590365" download="eager" />
+    <jar href="lib\commons-digester-2.1.jar" size="196768" download="eager" />
+    <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
+    <jar href="lib\fluent-hc-4.5.5.jar" size="31427" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\httpclient-4.5.5.jar" size="766123" download="eager" />
+    <jar href="lib\httpclient-cache-4.5.5.jar" size="161550" download="eager" />
+    <jar href="lib\httpclient-win-4.5.5.jar" size="17726" download="eager" />
+    <jar href="lib\httpcore-4.4.9.jar" size="325491" download="eager" />
+    <jar href="lib\httpmime-4.5.5.jar" size="41753" download="eager" />
+    <jar href="lib\itextpdf-5.3.4.jar" size="1810038" download="eager" />
+    <jar href="lib\jasperreports-6.7.0.jar" size="5528257" download="eager" />
+    <jar href="lib\jasperreports-javaflow-6.7.0.jar" size="5537261" download="eager" />
+    <jar href="lib\javax.json-1.0.jar" size="78579" download="eager" />
+    <jar href="lib\jcommon-1.0.23.jar" size="330246" download="eager" />
+    <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="lib\jfoenix-9.0.8.jar" size="2419463" download="eager" />
+    <jar href="lib\jfoenix.jar" size="2401594" download="eager" />
+    <jar href="lib\jfreechart-1.0.19.jar" size="1570157" download="eager" />
+    <jar href="lib\jna-4.4.0.jar" size="1091208" download="eager" />
+    <jar href="lib\jna-platform-4.4.0.jar" size="2281814" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.47.jar" size="1007502" download="eager" />
+    <jar href="lib\org-apache-commons-logging.jar" size="60786" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Betting" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="lk.betting.main.Betting"  name="Betting" />
+  <update check="always"/>
+</jnlp>

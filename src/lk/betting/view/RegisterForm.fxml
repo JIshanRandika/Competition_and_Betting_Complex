@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="663.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.betting.controller.RegisterFormController">
+   <children>
+
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="630.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+        <URL value="@../style/RegisterForm.css" />
+    </stylesheets>  
+    <children>
+      <Pane fx:id="pane01" layoutX="37.0" layoutY="142.0" prefHeight="401.0" prefWidth="588.0" />
+      <ImageView fx:id="image" fitHeight="592.0" fitWidth="684.0" layoutY="38.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/PageUsers.jpg" />
+         </image>
+      </ImageView>
+      <Pane fx:id="titleBar" onMouseDragged="#dragged" prefHeight="36.0" prefWidth="663.0">
+         <children>
+            <JFXButton fx:id="btnClose" layoutX="617.0" layoutY="2.0" onAction="#close" prefHeight="25.0" prefWidth="35.0" text="X" />
+            <JFXButton fx:id="btnMin" layoutX="573.0" layoutY="2.0" onAction="#min" prefHeight="25.0" prefWidth="35.0" text="-" />
+            <ImageView fx:id="logo" fitHeight="33.0" fitWidth="60.0" layoutX="1.0" layoutY="1.0" onMouseClicked="#logo" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="bottom" layoutX="-1.0" layoutY="588.0" prefHeight="42.0" prefWidth="664.0">
+               <children>
+                        <Label fx:id="ishan" layoutX="-137.0" layoutY="8.0" prefHeight="25.0" prefWidth="139.0" text="Jayaweerage Ishan Randika" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </Label>
+                  <JFXButton fx:id="btnBack" layoutX="15.0" layoutY="9.0" onAction="#back" prefHeight="25.0" prefWidth="72.0" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children></Pane>
+            <JFXButton fx:id="btnlogout" layoutX="580.0" layoutY="597.0" onAction="#logout" prefHeight="25.0" prefWidth="72.0" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="66.0" layoutY="5.0" prefHeight="27.0" prefWidth="115.0" text="Registation" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TabPane fx:id="tabPane" layoutX="22.0" layoutY="75.0" prefHeight="484.0" prefWidth="616.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="btnBetter" text="Betters">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="59.0" layoutY="37.0" prefHeight="27.0" prefWidth="72.0" text="Name    ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="333.0" layoutY="37.0" prefHeight="27.0" prefWidth="58.0" text="NIC   ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="59.0" layoutY="190.0" prefHeight="27.0" prefWidth="156.0" text="Mobile Number  ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="59.0" layoutY="110.0" prefHeight="27.0" prefWidth="110.0" text="Address         ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="337.0" layoutY="190.0" prefHeight="27.0" prefWidth="72.0" text="BOD ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="264.0" prefHeight="27.0" prefWidth="72.0" text="Age   ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtbtName" layoutX="59.0" layoutY="56.0" onAction="#btname" prefHeight="44.0" prefWidth="211.0" />
+                        <JFXTextField fx:id="txtbtNIC" layoutX="334.0" layoutY="56.0" onAction="#btNIC" prefHeight="44.0" prefWidth="227.0" />
+                        <JFXTextField fx:id="txtbtAddress" layoutX="59.0" layoutY="132.0" onAction="#btAddress" prefHeight="44.0" prefWidth="504.0" />
+                        <JFXTextField fx:id="txtbtMobile" layoutX="59.0" layoutY="212.0" onAction="#btMobile" prefHeight="44.0" prefWidth="212.0" />
+                        <JFXTextField fx:id="txtbtBOD" layoutX="337.0" layoutY="212.0" onAction="#btBOD" prefHeight="44.0" prefWidth="230.0" />
+                        <JFXTextField fx:id="txtbtAge" layoutX="62.0" layoutY="288.0" onAction="#btAge" prefHeight="44.0" prefWidth="85.0" />
+                        <JFXButton fx:id="btnbtRegister" layoutX="262.0" layoutY="296.0" onAction="#btRegister" prefHeight="44.0" prefWidth="295.0" text="Register">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="#00bbff" />
+                                    <Stop color="#0173b5" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill></JFXButton>
+                        <JFXButton fx:id="btnRegisteredBetters" layoutX="262.0" layoutY="355.0" onAction="#registeredBetters" prefHeight="44.0" prefWidth="295.0" text="Registered Betters">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="#00bbff" />
+                                    <Stop color="#0173b5" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill></JFXButton>
+                              <Label fx:id="conditions" layoutX="59.0" layoutY="377.0" onMouseClicked="#conditions" prefHeight="19.0" prefWidth="111.0" text="Term &amp; Conditions" textFill="#4d00ff">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="btnPlayers" text="Players">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="616.0">
+                     <children>
+                        <Label layoutX="63.0" layoutY="40.0" prefHeight="27.0" prefWidth="65.0" text="Name   ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="324.0" layoutY="40.0" prefHeight="27.0" prefWidth="48.0" text="NIC  ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="67.0" layoutY="200.0" prefHeight="27.0" prefWidth="156.0" text="Mobile Number  ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="119.0" prefHeight="27.0" prefWidth="78.0" text="Address ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="324.0" layoutY="200.0" prefHeight="27.0" prefWidth="79.0" text="BOD ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="66.0" layoutY="281.0" prefHeight="27.0" prefWidth="58.0" text="Age     ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtplName" layoutX="66.0" layoutY="61.0" onAction="#plName" prefHeight="44.0" prefWidth="210.0" />
+                        <JFXTextField fx:id="txtPlNIC" layoutX="324.0" layoutY="61.0" onAction="#plNIC" prefHeight="44.0" prefWidth="228.0" />
+                        <JFXTextField fx:id="txtplAddress" layoutX="66.0" layoutY="140.0" onAction="#plAddress" prefHeight="44.0" prefWidth="489.0" />
+                        <JFXTextField fx:id="txtplMobile" layoutX="68.0" layoutY="221.0" onAction="#plMobile" prefHeight="44.0" prefWidth="212.0" />
+                        <JFXTextField fx:id="txtplBOD" layoutX="324.0" layoutY="221.0" onAction="#plBOD" prefHeight="44.0" prefWidth="234.0" />
+                        <JFXTextField fx:id="txtplAge" layoutX="68.0" layoutY="302.0" onAction="#plAge" prefHeight="44.0" prefWidth="106.0" />
+                        <JFXButton fx:id="btnplRegister" layoutX="250.0" layoutY="295.0" onAction="#plRegister" prefHeight="44.0" prefWidth="304.0" text="Register">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="#00bbff" />
+                                    <Stop color="#0173b5" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill></JFXButton>
+                        <JFXButton fx:id="btnRegisteredPlayers" layoutX="249.0" layoutY="353.0" onAction="#registeredPlayers" prefHeight="44.0" prefWidth="304.0" text="Registered Players">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="#00bbff" />
+                                    <Stop color="#0173b5" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill></JFXButton>
+                              <Label fx:id="conditions" layoutX="49.0" layoutY="375.0" onMouseClicked="#conditions" prefHeight="19.0" prefWidth="111.0" text="Term &amp; Conditions" textFill="#4d00ff">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="btnJudgers" text="Judgers">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="156.0" layoutY="18.0" prefHeight="27.0" prefWidth="97.0" text="Name  ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="157.0" layoutY="96.0" prefHeight="27.0" prefWidth="58.0" text="NIC  ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="155.0" layoutY="182.0" prefHeight="27.0" prefWidth="133.0" text="Mobile Number">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="157.0" layoutY="274.0" prefHeight="27.0" prefWidth="72.0" text="Email ">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtJuNIC" layoutX="155.0" layoutY="116.0" onAction="#juNIC" prefHeight="44.0" prefWidth="321.0" />
+                        <JFXTextField fx:id="txtJuName" layoutX="157.0" layoutY="38.0" onAction="#juName" prefHeight="44.0" prefWidth="322.0" />
+                        <JFXTextField fx:id="txtJuMobile" layoutX="155.0" layoutY="203.0" onAction="#juMobile" prefHeight="44.0" prefWidth="324.0" />
+                        <JFXTextField fx:id="txtJuEmail" layoutX="154.0" layoutY="295.0" onAction="#juEmail" prefHeight="44.0" prefWidth="324.0" />
+                        <JFXButton fx:id="btnJuRegister" layoutX="140.0" layoutY="360.0" onAction="#juregister" prefHeight="36.0" prefWidth="359.0" text="Register">
+                           <ripplerFill>
+                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                 <stops>
+                                    <Stop color="#00bbff" />
+                                    <Stop color="#0173b5" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </ripplerFill></JFXButton>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
+
+</children>
+</StackPane>

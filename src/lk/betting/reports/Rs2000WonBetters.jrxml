@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="UsersForm" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b027409-3ffb-4b0c-ace1-a1cd3bbaf830">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Betting"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="cid" class="java.lang.String">
+		<parameterDescription><![CDATA[cid]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{cid}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select B_Name,B_NIC,B_Address,B_Mobile from bet left join winners using(C_ID) left join betterslevals using(B_ID) left join betters using(B_NIC) 
+	where winners.Le01_P_NIC=betterslevals.Le01_P_NIC and
+	winners.Le02_P_NIC=betterslevals.Le02_P_NIC and
+	winners.Le03_P_NIC=betterslevals.Le03_P_NIC and  C_ID=$P{cid}]]>
+	</queryString>
+	<field name="B_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="B_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="betters"/>
+	</field>
+	<field name="B_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="B_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="betterslevals"/>
+	</field>
+	<field name="B_Address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="B_Address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="betters"/>
+	</field>
+	<field name="B_Mobile" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="B_Mobile"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="betters"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#13A1F2" uuid="db9ec49e-65fc-463a-81b5-ca47eac55d01"/>
+				<staticText>
+					<reportElement x="17" y="12" width="420" height="38" forecolor="#FFFFFF" uuid="5d7bcfe5-7287-4533-b2fd-7ddc8ca97adb"/>
+					<textElement>
+						<font size="28" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LIST OF Rs 2000/= WINNERS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="393" y="67" width="180" height="20" forecolor="#FFFFFF" uuid="ea9b0a7b-077c-4d21-852e-681354801e55"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[BETTING & COMPETITION]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="18" y="50" width="162" height="30" forecolor="#FFFFFF" uuid="bf6ffffb-1a9b-420c-941d-6c3667f031f8"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Competition ID :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="180" y="50" width="100" height="30" forecolor="#FFFFFF" uuid="53c4ee27-9556-467a-9b11-c103a7653f99"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{cid}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31">
+			<line>
+				<reportElement x="-20" y="27" width="595" height="1" forecolor="#666666" uuid="7ab671fa-3c4b-4945-b39d-dd75170cb886"/>
+			</line>
+			<staticText>
+				<reportElement x="24" y="3" width="63" height="24" forecolor="#008FDB" uuid="4f0005fe-d015-4924-8113-5f371a4b329e"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="2" width="92" height="28" forecolor="#008FDB" uuid="9ab81a69-6966-4f5b-becf-c7929725fe88"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="3" width="75" height="24" forecolor="#008FDB" uuid="91006011-0d1d-4cd5-bb57-9843bac9d6e5"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="2" width="92" height="28" forecolor="#008FDB" uuid="030af6e8-1dad-4bef-aeae-c275a4b2b486"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mobile
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="27" width="555" height="1" uuid="335940ad-5fc4-4d3c-99b0-25ec4af67e2c"/>
+			</line>
+			<textField>
+				<reportElement x="27" y="6" width="100" height="16" forecolor="#1A8C96" uuid="3c6ab90f-3e35-4842-9af1-175656b38618">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9de96c41-fed7-4d20-9642-cd05f9114ec2"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="7" width="100" height="21" forecolor="#1A8C96" uuid="c56921a7-ad41-49e5-ad4a-e1e4412c4726">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a5ba2e1-9584-4a0d-a03f-b58fb66d0f10"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="8" width="100" height="20" forecolor="#1A8C96" uuid="35296207-2e49-4860-bd54-27b478fb7c20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cdd666aa-1807-49d2-9c85-10304da40d30"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="8" width="100" height="18" forecolor="#1A8C96" uuid="6ee7177e-50e3-429e-9cdd-a836103a4c25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3f9b677-a6d3-4aa5-b357-14f08bcc66f1"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_Mobile}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c782704c-9e1d-4b1f-b6f4-64ab4376ab73"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="98743888-abda-4a7e-b804-6916e19eb1f2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c2901d69-b0d8-447f-8d6c-864d0b0ec7b3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="101" y="4" width="80" height="22" uuid="b528f8ee-b094-4939-b909-e059d80fec2a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04-Apr-2019, 18:49:59
+    Author     : Your Name <Ishan Randika>
+*/
+#titleBar{
+    -fx-background-color:  #009fff;
+    /*-fx-background-radius: 8,7,6;*/
+    -fx-background-insets: 0,1,2;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#btnClose{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#009fff,#00d2ff);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+    /*-fx-padding: 3 30 3 30;*/
+    /*-fx-text-fill: black;*/
+    /*-fx-font-size: 14px;*/
+}
+
+#btnMin{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#009fff,#00d2ff);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+}
+
+#logpane{
+    -fx-background-color: #00d2ff;
+    -fx-background-insets: 15; 
+    -fx-background-radius: 0; 
+    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+    -fx-opacity: 0.7;
+    /*-fx-background-color:;*/
+}
+
+#btnLogin{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#AnchorPane
+{
+    -fx-background-color: #ffffff;
+   -fx-background-insets: 3; 
+    /*-fx-background-radius: 10;*/ 
+    -fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
+    -fx-border-color: rgb(49, 89, 23);
+    /*-fx-background-color: red;*/
+    /*-fx-border-radius: 100px;*/
+    /*-fx-box-shadow: 20px 50x 50px 16px red;*/
+}
+#forgotPassword{
+    -fx-cursor: hand;
+}
+

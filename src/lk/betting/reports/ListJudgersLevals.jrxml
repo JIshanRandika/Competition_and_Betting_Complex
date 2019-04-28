@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="UsersForm" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b027409-3ffb-4b0c-ace1-a1cd3bbaf830">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Betting"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select * from judgeslevals ORDER BY C_ID DESC LIMIT 200
+]]>
+	</queryString>
+	<field name="J_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="J_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="judgeslevals"/>
+	</field>
+	<field name="C_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="C_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="judgeslevals"/>
+	</field>
+	<field name="L1" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="judgeslevals"/>
+	</field>
+	<field name="L2" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="judgeslevals"/>
+	</field>
+	<field name="L3" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="judgeslevals"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#13A1F2" uuid="db9ec49e-65fc-463a-81b5-ca47eac55d01"/>
+				<staticText>
+					<reportElement x="20" y="20" width="420" height="43" forecolor="#FFFFFF" uuid="5d7bcfe5-7287-4533-b2fd-7ddc8ca97adb"/>
+					<textElement>
+						<font size="30" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LIST OF JUDGERS' LEVALS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="393" y="67" width="180" height="20" forecolor="#FFFFFF" uuid="ea9b0a7b-077c-4d21-852e-681354801e55"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[BETTING & COMPETITION]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31">
+			<line>
+				<reportElement x="-20" y="27" width="595" height="1" forecolor="#666666" uuid="7ab671fa-3c4b-4945-b39d-dd75170cb886"/>
+			</line>
+			<staticText>
+				<reportElement x="24" y="3" width="63" height="24" forecolor="#008FDB" uuid="4f0005fe-d015-4924-8113-5f371a4b329e"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="2" width="92" height="28" forecolor="#008FDB" uuid="9ab81a69-6966-4f5b-becf-c7929725fe88"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="3" width="133" height="24" forecolor="#008FDB" uuid="91006011-0d1d-4cd5-bb57-9843bac9d6e5"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Competition ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="3" width="92" height="28" forecolor="#008FDB" uuid="030af6e8-1dad-4bef-aeae-c275a4b2b486"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-02
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="3" width="92" height="28" forecolor="#008FDB" uuid="22544b36-5448-40c6-ab68-dac3e423c1e3"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-03
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="27" width="555" height="1" uuid="335940ad-5fc4-4d3c-99b0-25ec4af67e2c"/>
+			</line>
+			<textField>
+				<reportElement x="10" y="2" width="82" height="18" forecolor="#1A8C96" uuid="b34f59b3-e96a-4cd2-9c4d-60656e523c92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbee849f-008e-4e45-b2ea-1be9463330d1"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{J_NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="2" width="100" height="18" forecolor="#1A8C96" uuid="29cee894-10b2-49e9-8812-3b28f4f23abc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94029201-5982-49bf-892b-fbba79bc0e7b"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="2" width="100" height="18" forecolor="#1A8C96" uuid="84493de1-8d61-4b30-b0a2-dbcc6646002e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca69ce8c-29ce-4a49-800b-53f3743f9806"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="2" width="83" height="18" forecolor="#1A8C96" uuid="ce6b56a5-ed80-430f-a845-cece35632c0a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab45a995-af9c-4dce-b7f1-7db99c02c8fc"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="2" width="85" height="18" forecolor="#1A8C96" uuid="e0ed186f-fd19-457c-86cf-bbb64f112553">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bb3bab6f-85b0-4605-a87e-dc67b2c069c3"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c782704c-9e1d-4b1f-b6f4-64ab4376ab73"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="98743888-abda-4a7e-b804-6916e19eb1f2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c2901d69-b0d8-447f-8d6c-864d0b0ec7b3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="101" y="4" width="80" height="22" uuid="b528f8ee-b094-4939-b909-e059d80fec2a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,143 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-Apr-2019, 01:22:26
+    Author     : Your Name <Ishan Randika>
+*/
+#profilePic{
+    -fx-background-color: darkcyan;
+    -fx-background-color: aquamarine;
+/*                -fx-background-insets: 15; 
+                -fx-background-radius: 100; 
+                */-fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+}
+#titleBar{
+    -fx-background-color:  #009fff;
+     -fx-background-insets: 0,1,2;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#btnClose{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#009fff,#00d2ff);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+    /*-fx-padding: 3 30 3 30;*/
+    /*-fx-text-fill: black;*/
+    /*-fx-font-size: 14px;*/
+}
+
+#btnMin{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#009fff,#00d2ff);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+}
+#btnlogout{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#003399,#333333);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+}
+
+#bottom{
+        -fx-background-color:#111224;
+    }
+    #pane01{
+     -fx-background-color: #ffffff;
+   /*-fx-background-border: 3;*/ 
+    /*-fx-background-radius: 10;*/ 
+    -fx-effect: dropshadow(three-pass-box, #009fff, 10, 5, 0, 0);
+    -fx-border-color: #ffffff;
+    /*-fx-background-color: red;*/
+     /*-fx-effect: dropshadow( one-pass-box , black , 8 , 0 , 0 , 0 );*/
+    /*-fx-border-radius: 100px;*/
+}
+
+#btnUpdate{
+    -fx-cursor: hand;
+     -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #333333;
+}
+
+#btnRegister{
+    -fx-cursor: hand;
+     -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #333333;
+}
+
+#btnRemove{
+    -fx-cursor: hand;
+     -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #333333;
+}
+
+#btnUsersReport{
+    -fx-cursor: hand;
+     -fx-background-color: 
+        linear-gradient(#f2f2f2, #d6d6d6),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #333333;
+}
+
+#profilePane{
+      -fx-background-color: #ffffff;
+   /*-fx-background-insets: 3;*/ 
+    -fx-background-radius: 5; 
+    -fx-effect: dropshadow(three-pass-box, #009fff, 20, 0, 0, 0);
+    /*-fx-border-color: rgb(49, 89, 23);*/
+    /*-fx-background-color: red;*/
+    /*-fx-border-radius: 100px;*/
+    /*-fx-box-shadow: 20px 50x 50px 16px red;*/
+}
+
+#btnBack{
+    -fx-cursor: hand;
+    -fx-background-color: 
+        #ffffff,
+        linear-gradient(#ffffff,  #ffffff),
+        linear-gradient(#003399,#333333);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+}
+
+#logo{
+    -fx-cursor: hand;
+}

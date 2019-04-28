@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PlayersLevals" pageWidth="300" pageHeight="228" columnWidth="260" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="0" uuid="6da92f6d-a155-4f32-a913-fdaecbc012cc">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Betting"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="pnic" class="java.lang.String">
+		<parameterDescription><![CDATA[pnic]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{pnic}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cid" class="java.lang.String">
+		<parameterDescription><![CDATA[cid]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{cid}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from playerslevals where P_NIC=$P{pnic} and  C_ID=$P{cid}]]>
+	</queryString>
+	<field name="P_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="P_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="playerslevals"/>
+	</field>
+	<field name="C_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="C_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="playerslevals"/>
+	</field>
+	<field name="L1" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="playerslevals"/>
+	</field>
+	<field name="L2" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="playerslevals"/>
+	</field>
+	<field name="L3" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="L3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="playerslevals"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="300" height="25" forecolor="#FFFFFF" backcolor="#13A1F2" uuid="4f2ffc33-03d3-4796-b813-2e7d1f74f70c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="2" width="256" height="20" forecolor="#FFFFFF" uuid="29f046c5-ac54-4140-a464-681092c2f642">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPETITION & BETTING COMPLEX]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="-6" width="300" height="25" forecolor="#FFFFFF" backcolor="#4AB7FF" uuid="b7c29966-1230-4d17-b2fe-7e18f3a5f6b7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="-2" width="220" height="22" forecolor="#FFFFFF" uuid="495f3e71-2539-4c19-90aa-6d56559f6f5f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERMISSION TICKET FOR PLAYERS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="158" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="101" width="69" height="20" forecolor="#008FDB" uuid="b45179ee-f5aa-404f-ad40-e16fdb2916c7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-03 :
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="75" width="69" height="20" forecolor="#008FDB" uuid="47462694-099e-423d-8ed5-baa592fe35a3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-02 :
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="80" height="20" forecolor="#008FDB" uuid="a9f7ea52-ba03-4239-9793-648d59da7b74">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Your NIC :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="48" width="69" height="20" forecolor="#008FDB" uuid="4ac78ea7-1135-421c-b9b9-0e7c9133a548">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-01 :
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="23" width="99" height="20" forecolor="#008FDB" uuid="000f6a58-8258-4525-aabe-9cffc879cba5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d80d2d68-92eb-4a89-96d4-462102488c45"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Competition ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="124" width="240" height="31" forecolor="#D4514E" uuid="ec4cf787-31ad-4bfe-9b5c-991a51a65921"/>
+				<text><![CDATA[Please keep your Player Permission ticket until ending the competition.
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="81" y="0" width="100" height="21" forecolor="#1A8C96" uuid="e8f589a6-6f66-428a-b2ee-b2223b630688"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{P_NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="25" width="80" height="22" forecolor="#1A8C96" uuid="1f50857d-d862-4539-8728-bfc4803a18a5"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="49" width="80" height="20" forecolor="#1A8C96" uuid="ff0af72b-e7b8-4353-bc06-a2cb071bf608"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="101" width="100" height="17" forecolor="#1A8C96" uuid="b3c2b9d9-0565-4ffb-a30d-a65532a62d92"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="76" width="100" height="16" forecolor="#1A8C96" uuid="1ef9df0e-814c-42fe-9513-d1f6167dd095"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{L2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

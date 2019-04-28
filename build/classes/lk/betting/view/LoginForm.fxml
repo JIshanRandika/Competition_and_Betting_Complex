@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="530.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.betting.controller.LoginFormController">
+   <children>
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="604.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+        <URL value="@../style/LoginForm.css" />
+    </stylesheets>
+    <children>
+      <ImageView fx:id="image" fitHeight="605.0" fitWidth="530.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LoginPage.jpg" />
+         </image></ImageView>
+      <Pane fx:id="logpane" layoutX="126.0" layoutY="139.0" prefHeight="354.0" prefWidth="308.0">
+         <children>
+            <Label layoutX="38.0" layoutY="67.0" prefHeight="33.0" prefWidth="111.0" text="Email       " textFill="WHITE">
+               <font>
+                  <Font name="Geometr415 Blk BT Black" size="19.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="textEmail" focusColor="#001eff" layoutX="52.0" layoutY="100.0" onAction="#email" prefHeight="25.0" prefWidth="196.0" promptText="xxxxxx@gmail.com" unFocusColor="WHITE" />
+            <JFXButton fx:id="btnLogin" layoutX="43.0" layoutY="252.0" onAction="#loginAction" prefHeight="33.0" prefWidth="224.0" text="Login">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></JFXButton>
+            <Label layoutX="39.0" layoutY="147.0" prefHeight="33.0" prefWidth="111.0" text="Password " textFill="WHITE">
+               <font>
+                  <Font name="Geometr415 Blk BT Black" size="19.0" />
+               </font>
+            </Label>
+            <JFXPasswordField fx:id="textPassword" focusColor="#2600ff" layoutX="49.0" layoutY="184.0" onAction="#password" prefHeight="25.0" prefWidth="204.0" unFocusColor="WHITE" />
+            <ImageView fx:id="logo" fitHeight="107.0" fitWidth="161.0" layoutX="140.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="forgotPassword" layoutX="160.0" layoutY="226.0" onMouseClicked="#frogotPassword" prefHeight="19.0" prefWidth="111.0" text="Forgot Password ?" textFill="WHITE">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Label layoutX="139.0" layoutY="55.0" prefHeight="33.0" prefWidth="281.0" text="Competition &amp; Betting Complex" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Geometr415 Blk BT Black" size="19.0" />
+         </font>
+      </Label>
+      <Pane fx:id="titleBar" onMouseDragged="#dragged" prefHeight="33.0" prefWidth="530.0">
+         <children>
+            <JFXButton fx:id="btnClose" ellipsisString="." layoutX="492.0" layoutY="4.0" onAction="#close" prefHeight="25.0" prefWidth="31.0" ripplerFill="#0022ff" text="X" textFill="#e4e4e4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMin" layoutX="455.0" layoutY="4.0" onAction="#min" prefHeight="25.0" prefWidth="31.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></JFXButton>
+            <Label layoutX="12.0" layoutY="2.0" prefHeight="27.0" prefWidth="115.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+            <Label fx:id="ishan" layoutX="-151.0" layoutY="569.0" prefHeight="25.0" prefWidth="139.0" text="Jayaweerage Ishan Randika" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Circle fx:id="circle1" layoutX="12.0" layoutY="44.0" radius="9.0" stroke="#ffcf25" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#007bff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="circle2" layoutX="31.0" layoutY="44.0" radius="9.0" stroke="#ffcf25" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#007bff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="circle3" layoutX="50.0" layoutY="44.0" radius="9.0" stroke="#ffcf25" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#007bff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="circle4" layoutX="68.0" layoutY="44.0" radius="9.0" stroke="#ffcf25" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#007bff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="circle5" layoutX="87.0" layoutY="44.0" radius="9.0" stroke="#ffcf25" strokeWidth="0.0">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#007bff" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Circle>
+   </children>
+</AnchorPane>
+</children>
+</StackPane>

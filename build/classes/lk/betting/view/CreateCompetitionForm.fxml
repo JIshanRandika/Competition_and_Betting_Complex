@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="602.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.betting.controller.CreateCompetitionFormController">
+<stylesheets>
+        <URL value="@../style/CreateCompetitionForm.css" />
+    </stylesheets>    
+    <children>
+      <Pane fx:id="pane02" layoutX="46.0" layoutY="357.0" prefHeight="119.0" prefWidth="439.0" />
+      <Pane fx:id="pane01" layoutX="46.0" layoutY="57.0" prefHeight="275.0" prefWidth="439.0" />
+      <ImageView fx:id="image" fitHeight="572.0" fitWidth="530.0" layoutX="-2.0" layoutY="29.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LoginPage.jpg" />
+         </image>
+      </ImageView>
+      <JFXDatePicker fx:id="datePicker" defaultColor="#005f94" layoutX="101.0" layoutY="135.0" onAction="#datePicker" prefHeight="25.0" prefWidth="154.0" />
+      <JFXTimePicker fx:id="timePicker" defaultColor="#005f94" layoutX="315.0" layoutY="135.0" onAction="#timePicker" prefHeight="25.0" prefWidth="154.0" />
+      <JFXButton fx:id="btnCreateBet" layoutX="83.0" layoutY="373.0" onAction="#CreateBet" prefHeight="30.0" prefWidth="372.0" text="Create Bet">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <ripplerFill>
+            <RadialGradient centerX="0.5113636363636364" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#00bbff" />
+                  <Stop color="#0173b5" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill>
+      </JFXButton>
+      <Label layoutX="82.0" layoutY="195.0" prefHeight="36.0" prefWidth="94.0" text="Pool No    ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="255.0" layoutY="195.0" prefHeight="36.0" prefWidth="202.0" text="Number Of Tracks">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtpoolno" layoutX="104.0" layoutY="222.0" onAction="#poolNo" prefHeight="25.0" prefWidth="120.0" />
+      <JFXTextField fx:id="txtTracks" layoutX="316.0" layoutY="222.0" onAction="#tracks" prefHeight="25.0" prefWidth="120.0" />
+      <Label layoutX="103.0" layoutY="73.0" prefHeight="36.0" prefWidth="221.0" text="Competition ID     :">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtcomID" layoutX="317.0" layoutY="72.0" onAction="#comID" prefHeight="25.0" prefWidth="105.0" />
+      <JFXTextField fx:id="txtBetID" layoutX="273.0" layoutY="426.0" prefHeight="25.0" prefWidth="105.0" />
+      <Label layoutX="158.0" layoutY="423.0" prefHeight="36.0" prefWidth="113.0" text="Bet ID     :">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnCheckBets" layoutX="63.0" layoutY="501.0" onAction="#checkBets" prefHeight="36.0" prefWidth="154.0" text="Check Bets">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#00bbff" />
+                  <Stop color="#0173b5" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill></JFXButton>
+      <JFXButton fx:id="btnCheckCompetition" layoutX="293.0" layoutY="500.0" onAction="#checkCompetition" prefHeight="36.0" prefWidth="154.0" text="Check Competition">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#00bbff" />
+                  <Stop color="#0173b5" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill></JFXButton>
+      <JFXButton fx:id="btnCreateCompetition" layoutX="82.0" layoutY="285.0" onAction="#createCompetition" prefHeight="25.0" prefWidth="372.0" text="Create Competition">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#00bbff" />
+                  <Stop color="#0173b5" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill></JFXButton>
+      <Pane fx:id="titleBar" layoutX="-1.0" layoutY="1.0" onMouseDragged="#dragged" prefHeight="33.0" prefWidth="530.0">
+         <children>
+            <JFXButton fx:id="btnClose" ellipsisString="." layoutX="492.0" layoutY="4.0" onAction="#close" prefHeight="25.0" prefWidth="31.0" ripplerFill="#0022ff" text="X" textFill="#e4e4e4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnMin" layoutX="455.0" layoutY="4.0" onAction="#min" prefHeight="25.0" prefWidth="31.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="67.0" layoutY="4.0" prefHeight="27.0" prefWidth="213.0" text="Create Competiton &amp; Bet" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="bottom" layoutY="560.0" prefHeight="42.0" prefWidth="530.0">
+         <children>
+            <Label fx:id="ishan" layoutX="-139.0" layoutY="9.0" prefHeight="25.0" prefWidth="139.0" text="Jayaweerage Ishan Randika" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnBack" layoutX="11.0" layoutY="8.0" onAction="#back" prefHeight="25.0" prefWidth="72.0" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children></Pane>
+      <JFXButton fx:id="btnlogout" layoutX="448.0" layoutY="568.0" onAction="#logout" prefHeight="25.0" prefWidth="72.0" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="logo" fitHeight="33.0" fitWidth="60.0" layoutY="1.0" onMouseClicked="#logo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="WinnersForm" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13694a8c-86f7-40ba-a17d-49008d01ec96">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Check_Bets"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select * from winners ORDER BY C_ID DESC LIMIT 20]]>
+	</queryString>
+	<field name="C_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="C_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="winners"/>
+	</field>
+	<field name="Le01_P_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Le01_P_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="winners"/>
+	</field>
+	<field name="Le02_P_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Le02_P_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="winners"/>
+	</field>
+	<field name="Le03_P_NIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Le03_P_NIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="winners"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#13A1F2" uuid="59950819-9ce7-44ab-a0a5-dc5cb97a6188"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="84ee8169-4a93-462d-b665-3f3272e7a61c"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[WINNERS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="aa71020c-4d63-4da8-8306-22473debcb4d"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[BETTING & COMPETITION]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="64">
+			<staticText>
+				<reportElement x="136" y="2" width="130" height="56" forecolor="#008FDB" uuid="5dfb30aa-b7c7-4fe7-8eb7-352aa5af7a97"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-01 Player's NIC   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="3" width="130" height="56" forecolor="#008FDB" uuid="349fd899-d313-41dc-9bd2-5dc66b05396e"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-02 Player's NIC   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="2" width="130" height="56" forecolor="#008FDB" uuid="c1435d16-df71-429c-8789-21e64e6808ef"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leval-03 Player's NIC   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="120" height="56" forecolor="#008FDB" uuid="844ed66f-0fb0-4a95-ade9-302322df79a3"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Competition ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-10" y="30" width="555" height="1" uuid="33e1ee45-5318-40f6-b2f5-45b1e4780643"/>
+			</line>
+			<line>
+				<reportElement x="-20" y="0" width="595" height="1" forecolor="#666666" uuid="e024ba49-8e6d-4072-89fa-9bf6fb4d29a0"/>
+			</line>
+			<textField>
+				<reportElement x="18" y="5" width="100" height="30" forecolor="#1A8C96" uuid="a3e7221b-41b0-47e1-b0e6-e7c4f47f0ba1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9cdb375-93be-4509-8e75-f6a82b39aa2b"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="5" width="120" height="30" forecolor="#1A8C96" uuid="cdde6b2f-d503-49aa-b67f-bce3d8e5ffb0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f1a5e17-dbc7-4730-afda-4ea8e1fcf3a2"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Le01_P_NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="5" width="120" height="30" forecolor="#1A8C96" uuid="a8158329-111c-4ee5-b4ba-0abd6c35e5a0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4448ed1d-ac2b-4060-aa9b-5bbe41aab04f"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Le02_P_NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="5" width="115" height="30" forecolor="#1A8C96" uuid="edb9fd34-c1f7-4d89-a50a-59eb401bcf25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6c190bd-0df8-4f59-aae1-f7c8cf13997e"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Le03_P_NIC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="266f73f0-8f94-4eaa-97b7-b9f3c75977f5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="92142d47-d5a5-441d-aa2b-d2559a2b2217"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f5a9a11a-504e-41fb-962a-7514cf257d1d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="106" y="4" width="80" height="13" uuid="846d2c9f-8cf5-4091-b356-76ee7fe0194e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

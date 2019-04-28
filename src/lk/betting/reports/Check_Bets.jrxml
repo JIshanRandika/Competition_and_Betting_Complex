@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Check_Bets" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3776435e-6663-4037-84ec-db13be653339">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Check_Bets"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select B_ID,C_Date,C_Time,Pool_No,Tracks,C_ID from bet LEFT join competition using(C_ID) ORDER BY C_ID DESC LIMIT 10]]>
+	</queryString>
+	<field name="B_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="B_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bet"/>
+	</field>
+	<field name="C_Date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="C_Date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="competition"/>
+	</field>
+	<field name="C_Time" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="C_Time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="competition"/>
+	</field>
+	<field name="Pool_No" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Pool_No"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="competition"/>
+	</field>
+	<field name="Tracks" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Tracks"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="competition"/>
+	</field>
+	<field name="C_ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="C_ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bet"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#13A1F2" uuid="56da15c4-5519-4c6a-b74f-5ab51a216a36"/>
+				<staticText>
+					<reportElement x="22" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="98b7021d-f44e-4915-bd45-cacb56820d87"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BETS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="1542fc89-4e8c-4cb8-955d-83cccc44267c"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[COMPETITION & BETTING]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34">
+			<line>
+				<reportElement x="-20" y="30" width="595" height="1" forecolor="#666666" uuid="3571ca51-b4fa-441d-881a-9e382f4ccd24"/>
+			</line>
+			<staticText>
+				<reportElement x="-3" y="3" width="60" height="24" forecolor="#008FDB" uuid="c18529d7-5078-4c43-861e-ac8ebf5dce89"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bet ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="3" width="60" height="24" forecolor="#008FDB" uuid="6945f9eb-0bdd-4e2d-83eb-0429b4419f3e"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="3" width="60" height="24" forecolor="#008FDB" uuid="14f002db-fa64-45f6-94bc-70abba9cb109"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="3" width="70" height="24" forecolor="#008FDB" uuid="c7eb65fa-a667-452f-8152-fb78c406a12b"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pool No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="3" width="70" height="24" forecolor="#008FDB" uuid="39ab1ad1-fd34-4380-9503-b09305c5b651"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tracks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="3" width="130" height="24" forecolor="#008FDB" uuid="de5a846e-058e-4adc-87ba-03e149c29ed1"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Competition ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-3" y="28" width="555" height="1" uuid="6f0babc4-7d65-45a2-b937-25e2cfedb6ab"/>
+			</line>
+			<textField>
+				<reportElement x="-3" y="3" width="73" height="22" forecolor="#1A8C96" uuid="7ad2d81d-9124-4870-a557-dba8c6e3d5fa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7fec68b-5837-44f4-856d-5bfd26a20e96"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="3" width="77" height="22" forecolor="#1A8C96" uuid="124b6f04-f652-421d-b3c8-177cae6d202d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a1191af-47bb-459f-b6c2-231209577a10"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="2" width="100" height="23" forecolor="#1A8C96" uuid="2241ca18-fbf9-4aaa-9b6a-7702c185105a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8a862b1-0596-44ae-ac03-28aa8431b338"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_Time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="2" width="67" height="23" forecolor="#1A8C96" uuid="272409dd-bd51-43f4-bd72-08b9a432bc9a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="384da709-13dd-4648-a5aa-f675d1a73a17"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pool_No}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="3" width="60" height="21" forecolor="#1A8C96" uuid="a961a0d0-be92-4fa0-bc6c-729529932934">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2692ea90-9fbe-4cf3-9a6a-f5ebde5438e8"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tracks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="3" width="100" height="20" forecolor="#1A8C96" uuid="664a4e4b-4e7e-4384-bf37-5e2b0c0fb52c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f468dcb8-4042-4ad3-b432-b24ec3fefec6"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{C_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="37">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="21e04f9c-0ea1-499f-a8d3-e260522d43b8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="99a18a69-acb6-45a5-bf99-195d8d1a9ad2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="23bc8cec-22d0-4a2b-9b58-39f5479d296f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="100" y="4" width="100" height="13" uuid="fa7bc760-6030-47a7-8821-6d9686c6eca4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

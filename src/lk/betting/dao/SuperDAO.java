@@ -10,5 +10,5 @@ package lk.betting.dao;
  * @author Your Name <Ishan Randika>
  */
 public interface SuperDAO {
-    
+
 }

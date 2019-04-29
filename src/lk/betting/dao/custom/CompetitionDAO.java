@@ -8,11 +8,10 @@ package lk.betting.dao.custom;
 import lk.betting.dao.CrudDAO;
 import lk.betting.entity.Competition;
 
-
 /**
  *
  * @author Your Name <Ishan Randika>
  */
 public interface CompetitionDAO extends CrudDAO<Competition, String> {
-    
+
 }

@@ -13,12 +13,12 @@ import lk.betting.entity.Betters;
  *
  * @author Your Name <Ishan Randika>
  */
-public class RegisterBettersDAOImpl implements RegisterBettersDAO{
+public class RegisterBettersDAOImpl implements RegisterBettersDAO {
 
     @Override
     public boolean registerBetters(Betters betters) throws Exception {
-        return CrudUtil.executeUpdate("insert into betters values(?,?,?,?,?,?)", betters.getBtNIC(), betters.getBtName(), betters.getBtAddress(), betters.getBtMobile(),betters.getBtBOD(),betters.getBtAge());
+        return CrudUtil.executeUpdate("insert into betters values(?,?,?,?,?,?)", betters.getBtNIC(), betters.getBtName(), betters.getBtAddress(), betters.getBtMobile(), betters.getBtBOD(), betters.getBtAge());
 
     }
-    
+
 }

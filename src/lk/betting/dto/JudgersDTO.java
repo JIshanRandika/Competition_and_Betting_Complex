@@ -10,6 +10,7 @@ package lk.betting.dto;
  * @author Your Name <Ishan Randika>
  */
 public class JudgersDTO {
+
     private String juNIC;
     private String juName;
     private String juMobile;
@@ -56,6 +57,5 @@ public class JudgersDTO {
     public void setJuEmail(String juEmail) {
         this.juEmail = juEmail;
     }
-    
-    
+
 }

@@ -11,6 +11,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class PlayersLevals {
+
     private String plNIC;
     private String c_ID;
     private boolean leval_01;
@@ -68,5 +69,4 @@ public class PlayersLevals {
         this.leval_03 = leval_03;
     }
 
-    
 }

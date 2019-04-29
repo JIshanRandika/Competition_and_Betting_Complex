@@ -10,5 +10,5 @@ package lk.betting.bo;
  * @author Your Name <Ishan Randika>
  */
 public interface SuperBO {
-    
+
 }

@@ -14,7 +14,8 @@ import lk.betting.entity.Login;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface LoginBO extends SuperBO{
-            public boolean login(LoginDTO login) throws SQLException, ClassNotFoundException, Exception;
+public interface LoginBO extends SuperBO {
+
+    public boolean login(LoginDTO login) throws SQLException, ClassNotFoundException, Exception;
 
 }

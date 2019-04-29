@@ -9,7 +9,6 @@ and open the template in the editor.
 */
 #titleBar{
     -fx-background-color:  #009fff;
-    /*-fx-background-radius: 8,7,6;*/
     -fx-background-insets: 0,1,2;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
@@ -21,9 +20,6 @@ and open the template in the editor.
         linear-gradient(#009fff,#00d2ff);
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 3,2,1;
-    /*-fx-padding: 3 30 3 30;*/
-    /*-fx-text-fill: black;*/
-    /*-fx-font-size: 14px;*/
 }
 
 #btnMin{
@@ -42,7 +38,6 @@ and open the template in the editor.
     -fx-background-radius: 0; 
     -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
     -fx-opacity: 0.7;
-    /*-fx-background-color:;*/
 }
 
 #btnLogin{
@@ -60,13 +55,9 @@ and open the template in the editor.
 #AnchorPane
 {
     -fx-background-color: #ffffff;
-   -fx-background-insets: 3; 
-    /*-fx-background-radius: 10;*/ 
+    -fx-background-insets: 3; 
     -fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
     -fx-border-color: rgb(49, 89, 23);
-    /*-fx-background-color: red;*/
-    /*-fx-border-radius: 100px;*/
-    /*-fx-box-shadow: 20px 50x 50px 16px red;*/
 }
 #forgotPassword{
     -fx-cursor: hand;

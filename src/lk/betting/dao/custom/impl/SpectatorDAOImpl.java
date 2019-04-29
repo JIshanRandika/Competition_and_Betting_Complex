@@ -13,11 +13,11 @@ import lk.betting.entity.Spectator;
  *
  * @author Your Name <Ishan Randika>
  */
-public class SpectatorDAOImpl implements SpectatorDAO{
+public class SpectatorDAOImpl implements SpectatorDAO {
 
     @Override
     public boolean registerSpectator(Spectator spectator) throws Exception {
         return CrudUtil.executeUpdate("insert into spectator values(?,?,?,?)", spectator.getSpectatorID(), spectator.getSpectatorName(), spectator.getSpectatorAddress(), spectator.getSpectatorMobile());
     }
-    
+
 }

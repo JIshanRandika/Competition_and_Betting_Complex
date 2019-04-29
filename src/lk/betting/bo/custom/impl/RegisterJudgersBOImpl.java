@@ -16,13 +16,14 @@ import lk.betting.entity.Judgers;
  *
  * @author Your Name <Ishan Randika>
  */
-public class RegisterJudgersBOImpl implements RegisterJudgersBO{
-        RegisterJudgersDAO dao = (RegisterJudgersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.REGISTERJUDGERS);
+public class RegisterJudgersBOImpl implements RegisterJudgersBO {
+
+    RegisterJudgersDAO dao = (RegisterJudgersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.REGISTERJUDGERS);
 
     @Override
     public boolean registerJudgers(JudgersDTO ju) throws SQLException, ClassNotFoundException, Exception {
 
-        return dao.registerJudgers(new Judgers(ju.getJuNIC(),ju.getJuName(),ju.getJuMobile(),ju.getJuEmail()));
+        return dao.registerJudgers(new Judgers(ju.getJuNIC(), ju.getJuName(), ju.getJuMobile(), ju.getJuEmail()));
 
     }
 

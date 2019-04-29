@@ -57,6 +57,5 @@ public class Winners {
     public void setLe03_P_NIC(String le03_P_NIC) {
         this.le03_P_NIC = le03_P_NIC;
     }
-    
-    
+
 }

@@ -23,8 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lk.betting.dto.SpectatorDTO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -40,16 +38,18 @@ import javafx.util.Duration;
 import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.SpectatorBO;
 import lk.betting.db.DBConnection;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+
 /**
  * FXML Controller class
  *
  * @author Your Name <Ishan Randika>
  */
-public class SpectatorFormController implements Initializable {
+public class SpectatorFormController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -93,34 +93,27 @@ public class SpectatorFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         TranslateTransition transition = new TranslateTransition();
+        moveWindow(titleBar);
+
+        TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
+
         Image image = new Image("/lk/betting/image/LoginPage.jpg");
         this.image.setImage(image);
         Image logo = new Image("/lk/betting/image/logo.png");
         this.logo.setImage(logo);
-        
-          Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-               txtSpectatorID.requestFocus();
-        }
-    });
-        
-        // TODO
-    }    
 
-    @FXML
-    private void close(ActionEvent event) {
-         Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtSpectatorID.requestFocus();
+            }
+        });
     }
 
     @FXML
@@ -128,24 +121,21 @@ public class SpectatorFormController implements Initializable {
         Stage stage = (Stage) btnMin.getScene().getWindow();
         stage.setIconified(true);
     }
-  double x, y;
+
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
     private void spectatorID(ActionEvent event) {
-         if (Pattern.compile("^[S]{1}[0-9]{1,}$").matcher(txtSpectatorID.getText()).matches() ) {
+        if (Pattern.compile("^[S]{1}[0-9]{1,}$").matcher(txtSpectatorID.getText()).matches()) {
             txtSpectatorname.requestFocus();
         } else {
             txtSpectatorID.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input SpectatorID format is Invalid", ButtonType.OK);
             a.show();
         }
-        
+
     }
 
     @FXML
@@ -160,28 +150,26 @@ public class SpectatorFormController implements Initializable {
 
     @FXML
     private void spectatorMobile(ActionEvent event) {
-         if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(txtSpectatorMobile.getText()).matches() ) {
+        if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(txtSpectatorMobile.getText()).matches()) {
             btnRegister.fire();
         } else {
             txtSpectatorMobile.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
             a.show();
         }
-        
-    }
 
-    
-    
+    }
     static SpectatorBO bo = (SpectatorBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.SPECTATOR);
 
-      public static boolean registerSpectator(SpectatorDTO ju) throws SQLException, ClassNotFoundException, Exception {
+    public static boolean registerSpectator(SpectatorDTO ju) throws SQLException, ClassNotFoundException, Exception {
         return bo.registerSpectator(ju);
-    
-      }
+
+    }
+
     @FXML
     private void register(ActionEvent event) throws ClassNotFoundException, SQLException, JRException {
-        
-         try {
+
+        try {
             String spectatorID = txtSpectatorID.getText();
             String spectatorName = txtSpectatorname.getText();
             String spectatorAddress = txtSpectatorAddress.getText();
@@ -200,27 +188,28 @@ public class SpectatorFormController implements Initializable {
                 a.show();
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
             }
 
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
 
         } catch (Exception ex) {
-            Logger.getLogger(SpectatorFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         }
-         
-         InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/Spectators.jasper");
+
+        InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/Spectators.jasper");
         Connection connection = DBConnection.getInstance().getConnection();
         HashMap map = new HashMap();
         map.put("sid", txtSpectatorID.getText());
         JasperPrint print = JasperFillManager.fillReport(is, map, connection);
         JasperViewer.viewReport(print, false);
-        
+
         clearAll();
-        
+
         txtSpectatorID.requestFocus();
     }
 
@@ -233,26 +222,19 @@ public class SpectatorFormController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
     private void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/HomeForm.fxml"));
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }
-     public void clearAll() {
+
+    public void clearAll() {
         txtSpectatorID.setText("");
         txtSpectatorAddress.setText("");
         txtSpectatorMobile.setText("");
         txtSpectatorname.setText("");
-        
+
     }
 
     @FXML

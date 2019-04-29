@@ -13,11 +13,11 @@ import lk.betting.entity.CreateCompetition;
  *
  * @author Your Name <Ishan Randika>
  */
-public class CreateCompetitionDAOImpl implements CreateCompetitionDAO{
+public class CreateCompetitionDAOImpl implements CreateCompetitionDAO {
 
     @Override
     public boolean createCompetition(CreateCompetition createCompetition) throws Exception {
-        return CrudUtil.executeUpdate("insert into competition values(?,?,?,?,?)", createCompetition.getCompetitionDate(),createCompetition.getCompetitionTime(),createCompetition.getCompetitionID(),createCompetition.getPoolNo(),createCompetition.getTracks());
+        return CrudUtil.executeUpdate("insert into competition values(?,?,?,?,?)", createCompetition.getCompetitionDate(), createCompetition.getCompetitionTime(), createCompetition.getCompetitionID(), createCompetition.getPoolNo(), createCompetition.getTracks());
     }
-    
+
 }

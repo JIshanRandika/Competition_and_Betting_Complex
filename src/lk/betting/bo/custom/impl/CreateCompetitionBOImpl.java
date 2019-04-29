@@ -22,7 +22,7 @@ public class CreateCompetitionBOImpl implements CreateCompetitionBO {
 
     @Override
     public boolean createCompetition(CreateCompetitionDTO crcom) throws SQLException, ClassNotFoundException, Exception {
-        return dao.createCompetition(new CreateCompetition(crcom.getCompetitionID(),crcom.getCompetitionDate(),crcom.getCompetitionTime(),crcom.getPoolNo(),crcom.getTracks()));
+        return dao.createCompetition(new CreateCompetition(crcom.getCompetitionID(), crcom.getCompetitionDate(), crcom.getCompetitionTime(), crcom.getPoolNo(), crcom.getTracks()));
     }
 
 }

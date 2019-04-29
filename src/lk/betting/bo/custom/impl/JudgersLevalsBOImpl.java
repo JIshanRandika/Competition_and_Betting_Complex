@@ -21,11 +21,6 @@ public class JudgersLevalsBOImpl implements JudgersLevalsBO {
 
     JudgersLevalsDAO dao = (JudgersLevalsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.JUDGERSLEVALS);
 
-//    @Override
-//    public boolean fillcomboBox(boolean fill) throws SQLException, ClassNotFoundException, Exception {
-//        return dao.fillcomboBox(fill);
-//
-//    }
     @Override
     public ObservableList<String> fillcomboBox() throws Exception {
         return dao.fillcomboBox();
@@ -33,7 +28,7 @@ public class JudgersLevalsBOImpl implements JudgersLevalsBO {
 
     @Override
     public boolean saveJudgersLevals(JudgersLevalsDTO ju) throws SQLException, ClassNotFoundException, Exception {
-        return dao.saveJudgersLevals(new JudgersLevals(ju.getJuNIC(),ju.getC_ID(),ju.isLeval_01(),ju.isLeval_02(),ju.isLeval_03()));
+        return dao.saveJudgersLevals(new JudgersLevals(ju.getJuNIC(), ju.getC_ID(), ju.isLeval_01(), ju.isLeval_02(), ju.isLeval_03()));
     }
 
 }

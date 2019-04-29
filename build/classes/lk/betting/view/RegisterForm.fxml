@@ -51,7 +51,7 @@
                      </font>
                   </JFXButton>
                </children></Pane>
-            <JFXButton fx:id="btnlogout" layoutX="580.0" layoutY="597.0" onAction="#logout" prefHeight="25.0" prefWidth="72.0" text="Logout" textFill="WHITE">
+            <JFXButton fx:id="btnlogout" layoutX="580.0" layoutY="597.0" onAction="#logouts" prefHeight="25.0" prefWidth="72.0" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

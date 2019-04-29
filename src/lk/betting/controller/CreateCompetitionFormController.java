@@ -9,25 +9,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.io.InputStream;
 import lk.betting.db.DBConnection;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -53,8 +45,7 @@ import lk.betting.bo.custom.CreateBetBO;
 import lk.betting.bo.custom.CreateCompetitionBO;
 import lk.betting.dto.CreateBetDTO;
 import lk.betting.dto.CreateCompetitionDTO;
-import lk.betting.entity.Bet;
-import lk.betting.entity.Competition;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -65,7 +56,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Your Name <Ishan Randika>
  */
-public class CreateCompetitionFormController implements Initializable {
+public class CreateCompetitionFormController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -117,28 +108,27 @@ public class CreateCompetitionFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        moveWindow(titleBar);
+        
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
+
         Image image = new Image("/lk/betting/image/LoginPage.jpg");
         this.image.setImage(image);
         Image logo = new Image("/lk/betting/image/logo.png");
         this.logo.setImage(logo);
-        
-          Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-              txtcomID.requestFocus();
-        }
-    });
-       
-        // TODO
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtcomID.requestFocus();
+            }
+        });
     }
 
     static CreateCompetitionBO bo = (CreateCompetitionBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.CREATECOMPETITION);
@@ -148,29 +138,20 @@ public class CreateCompetitionFormController implements Initializable {
     public static boolean createCompetition(CreateCompetitionDTO crcom) throws SQLException, ClassNotFoundException, Exception {
         return bo.createCompetition(crcom);
     }
+
     public static boolean createBet(CreateBetDTO crbet) throws SQLException, ClassNotFoundException, Exception {
         return bobet.createBet(crbet);
     }
 
-    @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-
-    }
 
     @FXML
     private void min(ActionEvent event) {
         Stage stage = (Stage) btnMin.getScene().getWindow();
         stage.setIconified(true);
     }
-    double x, y;
 
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
@@ -191,23 +172,15 @@ public class CreateCompetitionFormController implements Initializable {
             if (addbet) {
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
                 a.show();
-//                loadAll();
-//                clearAll();
-//                JOptionPane.showMessageDialog(rootPane, "Done", "Done", JOptionPane.INFORMATION_MESSAGE);
             } else {
-//                JOptionPane.showMessageDialog(rootPane, "Not Done", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
-//            JOptionPane.showMessageDialog(this, "You Cannot Input :" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } //            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        //            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + ex.getMessage(), ButtonType.OK);
+        } catch (Exception ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
-            Logger.getLogger(CreateCompetitionFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         txtcomID.requestFocus();
@@ -242,12 +215,7 @@ public class CreateCompetitionFormController implements Initializable {
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date date = formatter.parse(competitionDate);
 
-//            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
             LocalTime localTime = LocalTime.parse(competitionTime);
-//            java.sql.Timestamp timeStampDate = new Timestamp(timeFormat);
-//            Date da = (Date) formatter.parse(competitionTime);
-//            java.sql.Timestamp timeStampDate = new Timestamp(date.getTime());
-//            Time d = timeFormat.parse(localTime);
 
             CreateCompetitionDTO com = new CreateCompetitionDTO();
             com.setCompetitionID(competitionID);
@@ -263,42 +231,19 @@ public class CreateCompetitionFormController implements Initializable {
                 a.show();
 
             } else {
-//                JOptionPane.showMessageDialog(rootPane, "Not Done", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
 
         } catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + ex.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
-            Logger.getLogger(CreateCompetitionFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         btnCreateBet.requestFocus();
     }
-
-//    public static boolean addCompetition(Competition com) throws SQLException, ClassNotFoundException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        String sql = "insert into competition values(?,?,?,?,?)";
-//        PreparedStatement pstm = connection.prepareStatement(sql);
-//        pstm.setObject(1, com.getC_Date());
-//        pstm.setObject(2, com.getC_Time());
-//        pstm.setObject(3, com.getC_ID());
-//        pstm.setObject(4, com.getPool_No());
-//        pstm.setObject(5, com.getTracks());
-//        return pstm.executeUpdate() > 0;
-//    }
-//    public static boolean addBet(Bet bet) throws SQLException, ClassNotFoundException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        String sql = "insert into bet values(?,?)";
-//        PreparedStatement pstm = connection.prepareStatement(sql);
-//        pstm.setObject(1, bet.getBet_ID());
-//        pstm.setObject(2, bet.getCom_ID());
-//
-//        return pstm.executeUpdate() > 0;
-//    }
 
     @FXML
     private void datePicker(ActionEvent event) {
@@ -322,23 +267,15 @@ public class CreateCompetitionFormController implements Initializable {
 
     @FXML
     private void comID(ActionEvent event) {
-        if (Pattern.compile("^[C]{1}[0-9]{1,}$").matcher(txtcomID.getText()).matches() ) {
+        if (Pattern.compile("^[C]{1}[0-9]{1,}$").matcher(txtcomID.getText()).matches()) {
             datePicker.requestFocus();
         } else {
             txtcomID.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input CompetitionID format is Invalid", ButtonType.OK);
             a.show();
         }
-//        datePicker.requestFocus();
     }
 
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
 
     @FXML
     private void logo(MouseEvent event) throws IOException {

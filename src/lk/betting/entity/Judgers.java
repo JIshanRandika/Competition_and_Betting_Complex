@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class Judgers {
+
     private String juNIC;
     private String juName;
     private String juMobile;
@@ -56,6 +57,5 @@ public class Judgers {
     public void setJuEmail(String juEmail) {
         this.juEmail = juEmail;
     }
-    
-    
+
 }

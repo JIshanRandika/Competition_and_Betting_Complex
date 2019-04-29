@@ -5,7 +5,6 @@
  */
 package lk.betting.dao.custom.impl;
 
-import static lk.betting.controller.LoginFormController.infoBox;
 import java.sql.ResultSet;
 import lk.betting.dao.CrudUtil;
 import lk.betting.dao.custom.LoginDAO;
@@ -16,21 +15,17 @@ import lk.betting.entity.Login;
  * @author Your Name <Ishan Randika>
  */
 public class LoginDAOImpl implements LoginDAO {
-boolean d;
+
+    boolean d;
+
     @Override
     public boolean loginUser(Login login) throws Exception {
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM users WHERE U_Email = ? and password =MD5(?)", login.getU_Email(), login.getPassword());
-//        Login log = null;
-//        while (rst.next()) {
-//            System.out.println(rst.next());
-////            log = new Login(rst.getString(5), rst.getString(8));
-//        }
-        
-        if(!rst.next()){
-            d=false;
-//            infoBox("Please enter correct Email and Password", null, "Failed");
-        }else{
-            d=true;
+
+        if (!rst.next()) {
+            d = false;
+        } else {
+            d = true;
         }
         return d;
     }

@@ -12,7 +12,6 @@ import lk.betting.bo.custom.TicketsBO;
 import lk.betting.dao.DAOFactory;
 import lk.betting.dao.custom.TicketsDAO;
 import lk.betting.dto.TicketsDTO;
-import lk.betting.entity.Spectator;
 import lk.betting.entity.Tickets;
 
 /**

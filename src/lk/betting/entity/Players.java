@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Your Name <Ishan Randika>
  */
 public class Players {
-    
+
     private String plNIC;
     private String plName;
     private String plMobile;
@@ -80,7 +80,4 @@ public class Players {
         this.plAge = plAge;
     }
 
-   
-    
-    
 }

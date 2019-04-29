@@ -10,6 +10,7 @@ package lk.betting.dto;
  * @author Your Name <Ishan Randika>
  */
 public class JudgersLevalsDTO {
+
     private String juNIC;
     private String c_ID;
     private boolean leval_01;
@@ -65,5 +66,5 @@ public class JudgersLevalsDTO {
 
     public void setLeval_03(boolean leval_03) {
         this.leval_03 = leval_03;
-    }   
+    }
 }

@@ -16,14 +16,13 @@ import lk.betting.entity.CreateBet;
  *
  * @author Your Name <Ishan Randika>
  */
-public class CreateBetBOImpl implements CreateBetBO{
+public class CreateBetBOImpl implements CreateBetBO {
 
-            CreateBetDAO dao = (CreateBetDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CREATEBET);
+    CreateBetDAO dao = (CreateBetDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CREATEBET);
 
-    
     @Override
     public boolean createBet(CreateBetDTO crbet) throws SQLException, ClassNotFoundException, Exception {
-        return dao.createBet(new CreateBet(crbet.getCompetitionID(),crbet.getBetID()));
+        return dao.createBet(new CreateBet(crbet.getCompetitionID(), crbet.getBetID()));
     }
-    
+
 }

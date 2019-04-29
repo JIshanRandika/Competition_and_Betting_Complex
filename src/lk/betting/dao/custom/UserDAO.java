@@ -22,7 +22,7 @@ public interface UserDAO extends CrudDAO<User, String> {
 
     public boolean removeUser(String userID) throws Exception;
 
-    public ArrayList<User> getAll()throws Exception;
+    public ArrayList<User> getAll() throws Exception;
 
     public ResultSet getimage(String nic) throws Exception;
 }

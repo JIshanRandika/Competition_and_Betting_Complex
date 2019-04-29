@@ -9,8 +9,6 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
@@ -21,6 +19,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,13 +30,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.betting.commonmethods.CommonMethods;
 
 /**
  * FXML Controller class
  *
  * @author Your Name <Ishan Randika>
  */
-public class HomeFormController implements Initializable {
+public class HomeFormController extends CommonMethods implements Initializable {
 
     @FXML
     private JFXButton btnusers;
@@ -80,28 +81,27 @@ public class HomeFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        moveWindow(titleBar);
+
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
+
         TranslateTransition cir1 = new TranslateTransition();
         cir1.setDuration(Duration.seconds(3));
         cir1.setToX(100);
-//        transition.setToY(500);
         cir1.setAutoReverse(true);
         cir1.setCycleCount(Animation.INDEFINITE);
         cir1.setNode(circle1);
         cir1.play();
-        
+
         TranslateTransition cir2 = new TranslateTransition();
         cir2.setDuration(Duration.seconds(3));
         cir2.setToX(200);
-//        transition.setToY(500);
         cir2.setAutoReverse(true);
         cir2.setCycleCount(Animation.INDEFINITE);
         cir2.setNode(circle2);
@@ -110,25 +110,22 @@ public class HomeFormController implements Initializable {
         TranslateTransition cir3 = new TranslateTransition();
         cir3.setDuration(Duration.seconds(3));
         cir3.setToX(300);
-//        transition.setToY(500);
         cir3.setAutoReverse(true);
         cir3.setCycleCount(Animation.INDEFINITE);
         cir3.setNode(circle3);
         cir3.play();
-        
+
         TranslateTransition cir4 = new TranslateTransition();
         cir4.setDuration(Duration.seconds(3));
         cir4.setToX(400);
-//        transition.setToY(500);
         cir4.setAutoReverse(true);
         cir4.setCycleCount(Animation.INDEFINITE);
         cir4.setNode(circle4);
         cir4.play();
-        
+
         TranslateTransition cir5 = new TranslateTransition();
         cir5.setDuration(Duration.seconds(3));
         cir5.setToX(500);
-//        transition.setToY(500);
         cir5.setAutoReverse(true);
         cir5.setCycleCount(Animation.INDEFINITE);
         cir5.setNode(circle5);
@@ -137,8 +134,6 @@ public class HomeFormController implements Initializable {
         this.image.setImage(image);
         Image logo = new Image("/lk/betting/image/logo.png");
         this.logo.setImage(logo);
-
-        // TODO
     }
 
     @FXML
@@ -152,7 +147,8 @@ public class HomeFormController implements Initializable {
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error :" + ex.getMessage(), ButtonType.OK);
+                a.show();
             }
         });
     }
@@ -168,9 +164,10 @@ public class HomeFormController implements Initializable {
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error :" + ex.getMessage(), ButtonType.OK);
+                a.show();
             }
-                });
+        });
     }
 
     @FXML
@@ -184,15 +181,10 @@ public class HomeFormController implements Initializable {
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error :" + ex.getMessage(), ButtonType.OK);
+                a.show();
             }
-                });
-    }
-
-    @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
+        });
     }
 
     @FXML
@@ -200,61 +192,43 @@ public class HomeFormController implements Initializable {
         Stage stage = (Stage) btnMin.getScene().getWindow();
         stage.setIconified(true);
     }
-    double x, y;
 
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
     private void organizing(ActionEvent event) throws IOException {
-         SequentialTransition fly = makeBtnFly(btnOrganizing);
+        SequentialTransition fly = makeBtnFly(btnOrganizing);
         fly.play();
         fly.setOnFinished(event1 -> {
-             try {
-                 Stage stage = (Stage) this.homepane.getScene().getWindow();
-                 Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/OrganizingForm.fxml"));
-                 Scene scen = new Scene(rt);
-                 stage.setScene(scen);
-             } catch (IOException ex) {
-                 Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-                });
-    }
-
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-//        SequentialTransition fly = makeBtnFly(btnOrganizing);
-//        fly.play();
-//        fly.setOnFinished(event1 -> {
             try {
                 Stage stage = (Stage) this.homepane.getScene().getWindow();
-                Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
+                Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/OrganizingForm.fxml"));
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error :" + ex.getMessage(), ButtonType.OK);
+                a.show();
             }
-//                  });
+        });
     }
 
     @FXML
     private void tickets(ActionEvent event) throws IOException {
-         SequentialTransition fly = makeBtnFly(btnTickets);
+        SequentialTransition fly = makeBtnFly(btnTickets);
         fly.play();
         fly.setOnFinished(event1 -> {
-             try {
-                 Stage stage = (Stage) this.homepane.getScene().getWindow();
-                 Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/TicketsForm.fxml"));
-                 Scene scen = new Scene(rt);
-                 stage.setScene(scen);
-             } catch (IOException ex) {
-                 Logger.getLogger(HomeFormController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         });
+            try {
+                Stage stage = (Stage) this.homepane.getScene().getWindow();
+                Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/TicketsForm.fxml"));
+                Scene scen = new Scene(rt);
+                stage.setScene(scen);
+            } catch (IOException ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Error :" + ex.getMessage(), ButtonType.OK);
+                a.show();
+            }
+        });
     }
 
     public SequentialTransition makeBtnFly(JFXButton btn) {

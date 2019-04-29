@@ -14,7 +14,8 @@ import lk.betting.entity.PlayersLevals;
  * @author Your Name <Ishan Randika>
  */
 public interface PlayersLevalsDAO extends CrudDAO< PlayersLevals, String> {
-      public ObservableList<String> fillcomboBox() throws Exception;
+
+    public ObservableList<String> fillcomboBox() throws Exception;
 
     public boolean savePlayersLevals(PlayersLevals players) throws Exception;
 }

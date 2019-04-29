@@ -13,11 +13,11 @@ import lk.betting.entity.CreateBet;
  *
  * @author Your Name <Ishan Randika>
  */
-public class CreateBetDAOImpl implements CreateBetDAO{
+public class CreateBetDAOImpl implements CreateBetDAO {
 
     @Override
     public boolean createBet(CreateBet createBet) throws Exception {
-        return CrudUtil.executeUpdate("insert into bet values(?,?)", createBet.getBetID(),createBet.getCompetitionID());
+        return CrudUtil.executeUpdate("insert into bet values(?,?)", createBet.getBetID(), createBet.getCompetitionID());
     }
-    
+
 }

@@ -15,14 +15,13 @@ import lk.betting.entity.Betters;
  *
  * @author Your Name <Ishan Randika>
  */
-public class RegisterBettersBOImpl implements RegisterBettersBO{
+public class RegisterBettersBOImpl implements RegisterBettersBO {
 
-            RegisterBettersDAO dao = (RegisterBettersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.REGISTERBETTERS);
+    RegisterBettersDAO dao = (RegisterBettersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.REGISTERBETTERS);
 
-    
     @Override
     public boolean registerBetters(BettersDTO better) throws Exception {
-        return dao.registerBetters(new Betters(better.getBtNIC(), better.getBtName(), better.getBtMobile(), better.getBtAddress(),better.getBtBOD(),better.getBtAge()));
+        return dao.registerBetters(new Betters(better.getBtNIC(), better.getBtName(), better.getBtMobile(), better.getBtAddress(), better.getBtBOD(), better.getBtAge()));
     }
-    
+
 }

@@ -22,7 +22,7 @@ public class LoginBOImpl implements LoginBO {
 
     @Override
     public boolean login(LoginDTO login) throws SQLException, ClassNotFoundException, Exception {
-        return dao.loginUser(new Login(login.getU_Email(),login.getPassword()));
+        return dao.loginUser(new Login(login.getU_Email(), login.getPassword()));
     }
 
 }

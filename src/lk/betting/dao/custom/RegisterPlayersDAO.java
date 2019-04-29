@@ -12,8 +12,8 @@ import lk.betting.entity.Players;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface RegisterPlayersDAO extends CrudDAO<Players, String>{
+public interface RegisterPlayersDAO extends CrudDAO<Players, String> {
 
     public boolean registerPlayers(Players players) throws Exception;
-    
+
 }

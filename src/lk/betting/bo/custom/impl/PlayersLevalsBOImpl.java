@@ -17,7 +17,8 @@ import lk.betting.entity.PlayersLevals;
  *
  * @author Your Name <Ishan Randika>
  */
-public class PlayersLevalsBOImpl implements PlayersLevalsBO{
+public class PlayersLevalsBOImpl implements PlayersLevalsBO {
+
     PlayersLevalsDAO dao = (PlayersLevalsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PLAYERSLEVALS);
 
     @Override
@@ -25,15 +26,8 @@ public class PlayersLevalsBOImpl implements PlayersLevalsBO{
         return dao.fillcomboBox();
     }
 
-//    @Override
-//    public boolean savePlayersLevals(PlayersLevalsDTO ju) throws SQLException, ClassNotFoundException, Exception {
-//        return dao.savePlayersLevals(new PlayersLevals(ju.getJuNIC(),ju.getC_ID(),ju.isLeval_01(),ju.isLeval_02(),ju.isLeval_03()));
-//    }
-
     @Override
     public boolean savePlayersLevals(PlayersLevalsDTO ju) throws SQLException, ClassNotFoundException, Exception {
-        return dao.savePlayersLevals(new PlayersLevals(ju.getPlNIC(),ju.getC_ID(),ju.isLeval_01(),ju.isLeval_02(),ju.isLeval_03()));
+        return dao.savePlayersLevals(new PlayersLevals(ju.getPlNIC(), ju.getC_ID(), ju.isLeval_01(), ju.isLeval_02(), ju.isLeval_03()));
     }
-    }
-    
-
+}

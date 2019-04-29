@@ -15,7 +15,8 @@ import lk.betting.dto.PlayersLevalsDTO;
  * @author Your Name <Ishan Randika>
  */
 public interface PlayersLevalsBO extends SuperBO {
-       public ObservableList<String> fillcomboBox() throws Exception;
+
+    public ObservableList<String> fillcomboBox() throws Exception;
 
     public boolean savePlayersLevals(PlayersLevalsDTO ju) throws SQLException, ClassNotFoundException, Exception;
 

@@ -14,8 +14,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
@@ -39,6 +37,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.betting.db.DBConnection;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -49,7 +48,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author ASUS
  */
-public class WonReportsController implements Initializable {
+public class WonReportsController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -89,17 +88,16 @@ public class WonReportsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         TranslateTransition transition = new TranslateTransition();
+        moveWindow(titleBar);
+
+        TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
-        
+
         Image image = new Image("/lk/betting/image/LoginPage.jpg");
         this.image.setImage(image);
         Image logo = new Image("/lk/betting/image/logo.png");
@@ -111,13 +109,6 @@ public class WonReportsController implements Initializable {
                 txtCompetitionID.requestFocus();
             }
         });
-        // TODO
-    }
-
-    @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
     }
 
     @FXML
@@ -133,13 +124,9 @@ public class WonReportsController implements Initializable {
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }
-    double x, y;
 
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
@@ -151,16 +138,8 @@ public class WonReportsController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
     private void competitonID(ActionEvent event) {
-        if (Pattern.compile("^[C]{1}[0-9]{1,}$").matcher(txtCompetitionID.getText()).matches() ) {
+        if (Pattern.compile("^[C]{1}[0-9]{1,}$").matcher(txtCompetitionID.getText()).matches()) {
             btnRs100.requestFocus();
         } else {
             txtCompetitionID.requestFocus();
@@ -182,11 +161,14 @@ public class WonReportsController implements Initializable {
                 JasperPrint print = JasperFillManager.fillReport(is, map, connection);
                 JasperViewer.viewReport(print, false);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (SQLException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (JRException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             }
         });
     }
@@ -204,13 +186,16 @@ public class WonReportsController implements Initializable {
                 JasperPrint print = JasperFillManager.fillReport(is, map, connection);
                 JasperViewer.viewReport(print, false);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (SQLException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (JRException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             }
-                 });
+        });
     }
 
     @FXML
@@ -226,34 +211,40 @@ public class WonReportsController implements Initializable {
                 JasperPrint print = JasperFillManager.fillReport(is, map, connection);
                 JasperViewer.viewReport(print, false);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (SQLException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             } catch (JRException ex) {
-                Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             }
-                 });
+        });
     }
 
     @FXML
     private void wonPlayers(ActionEvent event) throws ClassNotFoundException, JRException, SQLException {
-         SequentialTransition fly = makeBtnFly(btnWonPlayers);
+        SequentialTransition fly = makeBtnFly(btnWonPlayers);
         fly.play();
         fly.setOnFinished(event1 -> {
-             try {
-                 InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/WonPlayers.jasper");
-                 Connection connection = DBConnection.getInstance().getConnection();
-                 HashMap map = new HashMap();
-                 map.put("cid", txtCompetitionID.getText());
-                 JasperPrint print = JasperFillManager.fillReport(is, map, connection);
-                 JasperViewer.viewReport(print, false);
-             } catch (ClassNotFoundException ex) {
-                 Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (SQLException ex) {
-                 Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (JRException ex) {
-                 Logger.getLogger(WonReportsController.class.getName()).log(Level.SEVERE, null, ex);
-             }
+            try {
+                InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/WonPlayers.jasper");
+                Connection connection = DBConnection.getInstance().getConnection();
+                HashMap map = new HashMap();
+                map.put("cid", txtCompetitionID.getText());
+                JasperPrint print = JasperFillManager.fillReport(is, map, connection);
+                JasperViewer.viewReport(print, false);
+            } catch (ClassNotFoundException ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
+            } catch (SQLException ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
+            } catch (JRException ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
+            }
         });
     }
 

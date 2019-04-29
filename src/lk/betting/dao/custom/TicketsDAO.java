@@ -15,7 +15,8 @@ import lk.betting.entity.Tickets;
  * @author ASUS
  */
 public interface TicketsDAO extends CrudDAO<Tickets, String> {
-          public ObservableList<String> fillcomboBox() throws Exception;
+
+    public ObservableList<String> fillcomboBox() throws Exception;
 
     public boolean comfirmSeat(Tickets tickets) throws Exception;
 

@@ -12,8 +12,8 @@ import lk.betting.entity.Spectator;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface SpectatorDAO extends CrudDAO<Spectator, String>{
-    
-        public boolean registerSpectator(Spectator spectator) throws Exception;
+public interface SpectatorDAO extends CrudDAO<Spectator, String> {
+
+    public boolean registerSpectator(Spectator spectator) throws Exception;
 
 }

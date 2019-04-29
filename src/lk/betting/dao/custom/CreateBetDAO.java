@@ -12,8 +12,8 @@ import lk.betting.entity.CreateBet;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface CreateBetDAO extends CrudDAO< CreateBet, String>{
+public interface CreateBetDAO extends CrudDAO< CreateBet, String> {
 
-    public boolean createBet(CreateBet createBet)throws Exception;
-    
+    public boolean createBet(CreateBet createBet) throws Exception;
+
 }

@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Your Name <Ishan Randika>
  */
 public class Betters {
+
     private String btNIC;
     private String btName;
     private String btMobile;
@@ -79,7 +80,4 @@ public class Betters {
         this.btAge = btAge;
     }
 
-    
-
-     
 }

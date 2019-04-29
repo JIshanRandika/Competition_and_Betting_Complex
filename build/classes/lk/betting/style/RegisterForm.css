@@ -20,9 +20,6 @@ and open the template in the editor.
         linear-gradient(#009fff,#00d2ff);
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 3,2,1;
-    /*-fx-padding: 3 30 3 30;*/
-    /*-fx-text-fill: black;*/
-    /*-fx-font-size: 14px;*/
 }
 
 #btnMin{
@@ -49,26 +46,22 @@ and open the template in the editor.
 }
 
 #tabPane{
- -fx-rippler-fill:firebrick !important;
+    -fx-rippler-fill:firebrick !important;
     -fx-cursor:hand; 
     -fx-background-color: -mid-gray;
-	
+
     -fx-base: #32baff;
     -fx-font-size: 15.0pt;
-/*    -fx-font-weight:bold;*/
     -fx-background-color:
         linear-gradient(to bottom, derive(-fx-base,-30.0%), derive(-fx-base,-60.0%)),
         linear-gradient(to bottom, -light-black 2.0%, -dark-black 98.0%);
     -fx-background-insets: 0.0, 0.0 0.0 1.0 0.0;
-    /*-fx-padding: 0.9em 0.416667em 0.9em 0.416667em;*/
-    /*-fx-effect: dropshadow(two-pass-box,black,5.0,0.2,0.0,0.0);*/
 }
 
 
 #btnBetter{
     -fx-cursor: hand;
     -fx-font-weight:bold;
-    /*-fx-font-size: 15.0pt;*/
     -fx-background-color:#32baff;
 }
 #btnPlayers{
@@ -83,14 +76,9 @@ and open the template in the editor.
 }
 #pane01{
     -fx-cursor: hand;
-     -fx-background-color: #ffffff;
-   /*-fx-background-border: 3;*/ 
-    /*-fx-background-radius: 10;*/ 
+    -fx-background-color: #ffffff;
     -fx-effect: dropshadow(three-pass-box, #009fff, 10, 5, 0, 0);
     -fx-border-color: #ffffff;
-    /*-fx-background-color: red;*/
-     /*-fx-effect: dropshadow( one-pass-box , black , 8 , 0 , 0 , 0 );*/
-    /*-fx-border-radius: 100px;*/
 }
 
 #btnbtRegister{
@@ -177,35 +165,3 @@ and open the template in the editor.
 #conditions{
     -fx-cursor: hand;
 }
-/*.tabPane.tab-header-area .tab-header-background {
-    -fx-opacity: 0.0;
-    -fx-background-color:#252525 !important;  	    
-}
-
-.tabPane.tab-header-area .jfx-rippler{
-    -fx-rippler-fill:firebrick !important;
-    -fx-cursor:hand;
-}
-
-.tabPane.tab-header-area  .tab-selected-line{
-     -fx-stroke: firebrick !important;
-}
-
-.tabPane.tab .tab-label { 
-    -fx-alignment: CENTER;
-    -fx-text-fill: white;
-    -fx-font-size: 13.5px;  before it was 12px 
-    -fx-font-weight: bold;
-    -fx-wrap-text: true;
-    -fx-cursor:hand;
-}
-
-.tabPane.tab:hover .tab-label{
-	-fx-text-fill:white;
-	-fx-background-color:red !important;	
-	-fx-background-radius: 0.0;
-}
-
-.tabPane.tab:selected .tab-label{
-	-fx-background-color:#FFFFFF27;
-}*/

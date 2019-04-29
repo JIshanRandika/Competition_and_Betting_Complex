@@ -10,7 +10,7 @@ package lk.betting.dto;
  * @author Your Name <Ishan Randika>
  */
 public class BettersLevalsDTO {
-    
+
     private String b_NIC;
     private String b_ID;
     private String le01_P_NIC;
@@ -68,5 +68,4 @@ public class BettersLevalsDTO {
         this.le03_P_NIC = le03_P_NIC;
     }
 
-    
 }

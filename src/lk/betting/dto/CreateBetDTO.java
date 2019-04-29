@@ -5,12 +5,12 @@
  */
 package lk.betting.dto;
 
-
 /**
  *
  * @author Your Name <Ishan Randika>
  */
 public class CreateBetDTO {
+
     private String competitionID;
     private String betID;
 
@@ -37,6 +37,5 @@ public class CreateBetDTO {
     public void setBetID(String betID) {
         this.betID = betID;
     }
-    
-    
+
 }

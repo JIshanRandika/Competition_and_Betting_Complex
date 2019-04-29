@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author ASUS
  */
 public class Tickets {
+
     private String s_ID;
     private String c_ID;
     private String sheat_No;
@@ -56,6 +57,5 @@ public class Tickets {
     public void setTicket_No(String ticket_No) {
         this.ticket_No = ticket_No;
     }
-    
-    
+
 }

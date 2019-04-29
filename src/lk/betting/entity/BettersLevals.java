@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class BettersLevals {
+
     private String b_NIC;
     private String b_ID;
     private String le01_P_NIC;
@@ -66,6 +67,5 @@ public class BettersLevals {
     public void setLe03_P_NIC(String le03_P_NIC) {
         this.le03_P_NIC = le03_P_NIC;
     }
-    
-    
+
 }

@@ -26,10 +26,4 @@ public interface BettersLevalsBO extends SuperBO {
     public ResultSet getleval01Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception;
 
     public ResultSet getleval03Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception;
-
-//    public boolean leval02Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception;
-//
-//    public boolean leval01Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception;
-//
-//    public boolean leval03Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception;
 }

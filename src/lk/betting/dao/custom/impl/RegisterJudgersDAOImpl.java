@@ -13,13 +13,12 @@ import lk.betting.entity.Judgers;
  *
  * @author Your Name <Ishan Randika>
  */
-public class RegisterJudgersDAOImpl implements RegisterJudgersDAO{
+public class RegisterJudgersDAOImpl implements RegisterJudgersDAO {
 
     @Override
     public boolean registerJudgers(Judgers judgers) throws Exception {
         return CrudUtil.executeUpdate("insert into judges values(?,?,?,?)", judgers.getJuNIC(), judgers.getJuName(), judgers.getJuMobile(), judgers.getJuEmail());
 
-
     }
-    
+
 }

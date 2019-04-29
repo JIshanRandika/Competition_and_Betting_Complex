@@ -16,8 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
@@ -29,7 +27,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -48,6 +45,7 @@ import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.BettersLevalsBO;
 import lk.betting.db.DBConnection;
 import lk.betting.dto.BettersLevalsDTO;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -58,7 +56,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Your Name <Ishan Randika>
  */
-public class BettersLevalsController implements Initializable {
+public class BettersLevalsController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -107,10 +105,12 @@ public class BettersLevalsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        moveWindow(titleBar);
+
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
@@ -130,11 +130,12 @@ public class BettersLevalsController implements Initializable {
 
         try {
             fillcombo();
-            // TODO
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BettersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Better NIC & BetID Correctly !!", ButtonType.OK);
+            a.show();
         } catch (Exception ex) {
-            Logger.getLogger(BettersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Better NIC & BetID Correctly !!", ButtonType.OK);
+            a.show();
         }
     }
 
@@ -165,16 +166,6 @@ public class BettersLevalsController implements Initializable {
         return bo.getleval02Pnic(nic, betID);
     }
 
-//    public static boolean leval02Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return bo.leval02Pnic(nic, betID);
-//    }
-//    public static boolean leval01Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return bo.leval01Pnic(nic, betID);
-//    }
-//    
-//    public static boolean leval04Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return bo.leval03Pnic(nic, betID);
-//    }
     @FXML
     private void min(ActionEvent event) {
         Stage stage = (Stage) btnMin.getScene().getWindow();
@@ -182,18 +173,7 @@ public class BettersLevalsController implements Initializable {
     }
 
     @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-    }
-
-    double x, y;
-
-    @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
@@ -216,14 +196,11 @@ public class BettersLevalsController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Your NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-
-//            cobBetID.requestFocus();
     }
 
     @FXML
     private void leval_01_PlNIC(ActionEvent event) throws SQLException, Exception {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_01_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_01_PlNIC.getText()).matches()) {
-//            txtLeval_02_PlNIC.requestFocus();
 
             ResultSet resultSet = BettersLevalsController.getleval02Pnic(txtLeval_01_PlNIC.getText(), cobBetID.getSelectionModel().getSelectedItem());
             boolean empty = true;
@@ -246,13 +223,11 @@ public class BettersLevalsController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-01-Player's NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-//        txtLeval_02_PlNIC.requestFocus();
     }
 
     @FXML
     private void leval_02_PlNIC(ActionEvent event) throws ClassNotFoundException, Exception {
 
-//        String l2 = "not";
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_02_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_02_PlNIC.getText()).matches()) {
 
             ResultSet resultSet = BettersLevalsController.getleval02Pnic(txtLeval_02_PlNIC.getText(), cobBetID.getSelectionModel().getSelectedItem());
@@ -265,62 +240,20 @@ public class BettersLevalsController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 02 in this competition", ButtonType.OK);
                 a.show();
                 txtLeval_02_PlNIC.requestFocus();
-                System.out.println("empty");
             } else {
                 txtLeval_03_PlNIC.requestFocus();
-                System.out.println("Okay");
             }
-//                l2 = resultSet.getString(1);
-////                System.out.println(l2);
-//            if (resultSet.getRow() == 2) {
-////                    System.out.println("This Player will not partisipate to this leval in this competition");
-////                    txtLeval_03_PlNIC.requestFocus();
-//                System.out.println("2");
-//            }
-//            if (resultSet.getRow() == 0) {
-//                System.out.println("0");
-//            }
-//            if (resultSet.getRow() == 1) {
-//                System.out.println("1");
-//            }
-//            if (resultSet.getRow() == 3) {
-//                System.out.println("3");
-//            }
-//            if (resultSet.getRow() == 4) {
-//                System.out.println("4");
-//            }
-//                else {
-//                    txtLeval_03_PlNIC.requestFocus();
-//                    System.out.println("This Player will not partisipate to this leval in this competition");
-////                    System.out.println("This Player will not partisipate to this leval in this competition");
-//                }
-//            if (resultSet.getRow() != 1) {
-//                    txtLeval_03_PlNIC.requestFocus();
-//                    System.out.println("Okay");
-//            }
-
-//            l2 = resultSet.getString(1);
-//            javafx.scene.image.Image img = new javafx.scene.image.Image(selectedimg);
-//            profilePic.setImage(img);
-//            }
-//            boolean nic = BettersLevalsController.leval02Pnic(txtLeval_02_PlNIC.getText(), cobBetID.getSelectionModel().getSelectedItem());
-//            if (nic) {
-//                System.out.println("Okay");
-//            } else {
-//                System.out.println("This Player will not partisipate to this leval in this competition");
-//            }
         } else {
             txtLeval_02_PlNIC.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-02-Player's NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-//        txtLeval_03_PlNIC.requestFocus();
     }
 
     @FXML
     private void leval_03_PlNIC(ActionEvent event) throws SQLException, Exception {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_03_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_03_PlNIC.getText()).matches()) {
-          
+
             ResultSet resultSet = BettersLevalsController.getleval02Pnic(txtLeval_03_PlNIC.getText(), cobBetID.getSelectionModel().getSelectedItem());
             boolean empty = true;
             while (resultSet.next()) {
@@ -331,20 +264,15 @@ public class BettersLevalsController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 03 in this competition", ButtonType.OK);
                 a.show();
                 txtLeval_03_PlNIC.requestFocus();
-                System.out.println("empty");
             } else {
                 btnSave.fire();
-                System.out.println("Okay");
             }
-            
-            
-//            btnSave.fire();
+
         } else {
             txtLeval_03_PlNIC.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-03-Player's NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-//        btnSave.requestFocus();
     }
 
     @FXML
@@ -402,28 +330,6 @@ public class BettersLevalsController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Input Your NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
-//            String b_ID = cobBetID.getSelectionModel().getSelectedItem();
-//            String le01_P_NIC = txtLeval_01_PlNIC.getText();
-//            String le02_P_NIC = txtLeval_02_PlNIC.getText();
-//            String le03_P_NIC = txtLeval_03_PlNIC.getText();
-
-//            BettersLevalsDTO bt = new BettersLevalsDTO();
-//            bt.setB_NIC(b_NIC);
-//            bt.setB_ID(b_ID);
-//            bt.setLe01_P_NIC(le01_P_NIC);
-//            bt.setLe02_P_NIC(le02_P_NIC);
-//            bt.setLe03_P_NIC(le03_P_NIC);
-//
-//            boolean addCom = BettersLevalsController.saveBettersLevals(bt);
-//
-//            if (addCom) {
-//                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-//                a.show();
-//
-//            } else {
-//                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
-//                a.show();
-//            }
         } catch (NumberFormatException e) {
             Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
             a.show();
@@ -431,7 +337,6 @@ public class BettersLevalsController implements Initializable {
         } catch (Exception ex) {
             Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + ex.getMessage(), ButtonType.OK);
             a.show();
-            Logger.getLogger(BettersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/BetLevals.jasper");
@@ -448,14 +353,6 @@ public class BettersLevalsController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
     private void logo(MouseEvent event) throws IOException {
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/HomeForm.fxml"));
@@ -465,6 +362,7 @@ public class BettersLevalsController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
+
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/OrganizingForm.fxml"));
         Scene scen = new Scene(rt);
@@ -476,7 +374,6 @@ public class BettersLevalsController implements Initializable {
         txtLeval_01_PlNIC.setText("");
         txtLeval_02_PlNIC.setText("");
         txtLeval_03_PlNIC.setText("");
-//        cobBetID.getAccessibleText("");
 
     }
 
@@ -491,13 +388,10 @@ public class BettersLevalsController implements Initializable {
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(BettersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Your System has some detail errors, Please call your manager", ButtonType.OK);
+                a.show();
             }
         });
-//        Stage stage = (Stage) this.anchor.getScene().getWindow();
-//        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/RegisterForm.fxml"));
-//        Scene scen = new Scene(rt);
-//        stage.setScene(scen);
     }
 
     @FXML
@@ -511,10 +405,6 @@ public class BettersLevalsController implements Initializable {
     private void handleCancellation(ActionEvent event) {
         SequentialTransition fly = makeBtnFly(cancelbtn);
         fly.play();
-//        fly.setOnFinished(event1 -> {
-//            checkoutController.seatsselected=false;
-//            handleClose(event);
-//        });
     }
 
     public SequentialTransition makeBtnFly(JFXButton btn) {
@@ -530,6 +420,5 @@ public class BettersLevalsController implements Initializable {
 
     @FXML
     private void cursor(MouseEvent event) {
-//        scene.setCursor(Cursor.HAND);
     }
 }

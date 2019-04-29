@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class Login {
+
     private String u_Email;
     private String password;
 
@@ -36,6 +37,5 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
 }

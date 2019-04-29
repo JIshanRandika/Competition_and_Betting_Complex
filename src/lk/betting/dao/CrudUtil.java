@@ -16,30 +16,27 @@ import lk.betting.db.DBConnection;
  * @author Your Name <Ishan Randika>
  */
 public class CrudUtil {
+
     private static PreparedStatement getPreaparedStatement(String sql, Object... data) throws ClassNotFoundException, SQLException {
-//        System.out.println("PreaparedStatment");
         Connection connection = DBConnection.getInstance().getConnection();
-//        System.out.println("getconnection");
         PreparedStatement pstm = connection.prepareStatement(sql);
         for (int i = 0; i < data.length; i++) {
             pstm.setObject(i + 1, data[i]);
         }
-//        System.out.println("returnPstm");
-//        System.out.println(pstm.executeUpdate()>0);
+
         return pstm;
     }
 
     public static boolean executeUpdate(String sql, Object... data) throws ClassNotFoundException, SQLException {
-//        System.out.println("execute");
         return getPreaparedStatement(sql, data).executeUpdate() > 0;
     }
 
     public static ResultSet executeQuery(String sql, Object... data) throws ClassNotFoundException, SQLException {
         return getPreaparedStatement(sql, data).executeQuery();
     }
-    
+
     public static boolean executeQuer(String sql, Object... data) throws ClassNotFoundException, SQLException {
         return getPreaparedStatement(sql, data).execute();
     }
-    
+
 }

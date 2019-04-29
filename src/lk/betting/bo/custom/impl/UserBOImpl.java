@@ -25,7 +25,6 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public boolean registerUser(UserDTO user) throws SQLException, ClassNotFoundException, Exception {
-        System.out.println("BOImpl");
         System.out.println(user.getPassword());
         return dao.registerUser(new User(user.getUserID(), user.getU_Name(), user.getU_NIC(), user.getMobile_No(), user.getU_Email(), user.getU_Address(), user.getbOD(), user.getPassword(), user.getImage()));
 

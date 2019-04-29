@@ -5,8 +5,6 @@
  */
 package lk.betting.dto;
 
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -14,7 +12,7 @@ import java.util.Date;
  * @author Your Name <Ishan Randika>
  */
 public class CreateCompetitionDTO {
-    
+
     private String competitionID;
     private Date competitionDate;
     private String competitionTime;
@@ -72,9 +70,4 @@ public class CreateCompetitionDTO {
         this.tracks = tracks;
     }
 
-    
-
-    
-    
-    
 }

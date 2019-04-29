@@ -31,6 +31,6 @@ public class JudgersLevalsDAOImpl implements JudgersLevalsDAO {
 
     @Override
     public boolean saveJudgersLevals(JudgersLevals judgers) throws Exception {
-        return CrudUtil.executeUpdate("insert into judgeslevals values(?,?,?,?,?)", judgers.getJuNIC(), judgers.getC_ID(), judgers.isLeval_01(), judgers.isLeval_02(),judgers.isLeval_03());
+        return CrudUtil.executeUpdate("insert into judgeslevals values(?,?,?,?,?)", judgers.getJuNIC(), judgers.getC_ID(), judgers.isLeval_01(), judgers.isLeval_02(), judgers.isLeval_03());
     }
 }

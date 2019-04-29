@@ -13,5 +13,5 @@ import lk.betting.entity.Bet;
  * @author Your Name <Ishan Randika>
  */
 public interface BetDAO extends CrudDAO<Bet, String> {
-    
+
 }

@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class Spectator {
+
     private String spectatorID;
     private String spectatorName;
     private String spectatorAddress;
@@ -56,6 +57,5 @@ public class Spectator {
     public void setSpectatorMobile(String spectatorMobile) {
         this.spectatorMobile = spectatorMobile;
     }
-    
-    
+
 }

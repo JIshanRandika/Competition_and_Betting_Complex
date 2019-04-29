@@ -20,11 +20,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean registerUser(User user) throws Exception {
-        System.out.println("DAOImpl");
         System.out.println(user.getPassword());
         return CrudUtil.executeUpdate("insert into users values(?,?,?,?,?,?,?,MD5(?),?)", user.getUserID(), user.getU_Name(), user.getU_NIC(), user.getMobile_No(), user.getU_Email(), user.getU_Address(), user.getbOD(), user.getPassword(), user.getImage());
     }
-//(userID,U_Name,U_NIC,Mobile_No,U_Email,U_Address,BOD,password,image)
 
     @Override
     public boolean UpdateUser(User user) throws Exception {

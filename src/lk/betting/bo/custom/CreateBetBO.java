@@ -13,7 +13,8 @@ import lk.betting.dto.CreateBetDTO;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface CreateBetBO extends SuperBO{
-        public boolean createBet(CreateBetDTO crbet) throws SQLException, ClassNotFoundException, Exception;
+public interface CreateBetBO extends SuperBO {
+
+    public boolean createBet(CreateBetDTO crbet) throws SQLException, ClassNotFoundException, Exception;
 
 }

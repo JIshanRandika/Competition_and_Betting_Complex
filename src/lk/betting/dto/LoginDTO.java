@@ -10,6 +10,7 @@ package lk.betting.dto;
  * @author Your Name <Ishan Randika>
  */
 public class LoginDTO {
+
     private String u_Email;
     private String password;
 

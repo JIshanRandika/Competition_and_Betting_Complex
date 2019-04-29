@@ -13,21 +13,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +31,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,9 +43,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.JudgersLevalsBO;
-import lk.betting.dao.custom.JudgersLevalsDAO;
 import lk.betting.db.DBConnection;
 import lk.betting.dto.JudgersLevalsDTO;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -63,7 +56,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Your Name <Ishan Randika>
  */
-public class JudgersLevalsController implements Initializable {
+public class JudgersLevalsController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -112,44 +105,44 @@ public class JudgersLevalsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         TranslateTransition transition = new TranslateTransition();
+        moveWindow(titleBar);
+
+        TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
+
         Image image = new Image("/lk/betting/image/LoginPage.jpg");
         this.image.setImage(image);
         Image logo = new Image("/lk/betting/image/logo.png");
         this.logo.setImage(logo);
-        
-          Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-              txtNIC.requestFocus();
-        }
-    });
-        
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtNIC.requestFocus();
+            }
+        });
+
         try {
             fillcombo();
-            // TODO
         } catch (SQLException ex) {
-            Logger.getLogger(JudgersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JudgersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         } catch (Exception ex) {
-            Logger.getLogger(JudgersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         }
     }
 
     static JudgersLevalsBO bo = (JudgersLevalsBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.JUDGERSLEVALS);
 
-//      public static boolean fillcomboBox(boolean fill) throws SQLException, ClassNotFoundException, Exception {
-//        return bo.fillcomboBox(fill);
-//    }
     public static ObservableList<String> fillcomboBox() throws ClassNotFoundException, SQLException, Exception {
         return bo.fillcomboBox();
     }
@@ -159,19 +152,6 @@ public class JudgersLevalsController implements Initializable {
     }
 
     private void fillcombo() throws SQLException, ClassNotFoundException, Exception {
-//        ObservableList<String> list = FXCollections.observableArrayList();
-//        String sql = "SELECT * FROM competition ORDER BY C_ID DESC LIMIT 3";
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        PreparedStatement pstm = connection.prepareStatement(sql);
-//        ResultSet rst = pstm.executeQuery();
-//
-//        while (rst.next()) {
-//
-//            String name = rst.getString("C_ID");
-//            list.add(name);
-////            cobCompetitionID.getItems().add(name);
-//
-//        }
         cobCompetitionID.setItems(fillcomboBox());
     }
 
@@ -182,17 +162,7 @@ public class JudgersLevalsController implements Initializable {
     }
 
     @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-    }
-    double x, y;
-
-    @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
@@ -204,7 +174,7 @@ public class JudgersLevalsController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Better NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-        
+
     }
 
     @FXML
@@ -271,20 +241,19 @@ public class JudgersLevalsController implements Initializable {
                 a.show();
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
             }
 
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
 
         } catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + ex.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
-            Logger.getLogger(JudgersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/JudgersLevals.jasper");
         Connection connection = DBConnection.getInstance().getConnection();
         HashMap map = new HashMap();
@@ -292,9 +261,9 @@ public class JudgersLevalsController implements Initializable {
         map.put("cid", cobCompetitionID.getSelectionModel().getSelectedItem());
         JasperPrint print = JasperFillManager.fillReport(is, map, connection);
         JasperViewer.viewReport(print, false);
-        
+
         clearAll();
-        
+
         txtNIC.requestFocus();
     }
 
@@ -307,43 +276,33 @@ public class JudgersLevalsController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
     private void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/OrganizingForm.fxml"));
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }
- public void clearAll() {
+
+    public void clearAll() {
         txtNIC.setText("");
-//        txtLeval_01_PlNIC.setText("");
-//        txtLeval_02_PlNIC.setText("");
-//        txtLeval_03_PlNIC.setText("");
-//        cobBetID.getAccessibleText("");
-        
+
     }
 
     @FXML
     private void btnnew(ActionEvent event) throws IOException {
-        SequentialTransition fly=makeBtnFly(btnNew);
+        SequentialTransition fly = makeBtnFly(btnNew);
         fly.play();
-         fly.setOnFinished(event1 -> {
+        fly.setOnFinished(event1 -> {
             try {
                 Stage stage = (Stage) this.anchor.getScene().getWindow();
                 Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/RegisterForm.fxml"));
                 Scene scen = new Scene(rt);
                 stage.setScene(scen);
             } catch (IOException ex) {
-                Logger.getLogger(JudgersLevalsController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Your System has some detail errors, Please call your manager", ButtonType.OK);
+                a.show();
             }
-                  });
+        });
     }
 
     @FXML
@@ -353,15 +312,15 @@ public class JudgersLevalsController implements Initializable {
         JasperPrint print = JasperFillManager.fillReport(is, null, connection);
         JasperViewer.viewReport(print, false);
     }
-    
-     public SequentialTransition makeBtnFly(JFXButton btn){
-        TranslateTransition t1=new TranslateTransition(Duration.millis(200),btn);
+
+    public SequentialTransition makeBtnFly(JFXButton btn) {
+        TranslateTransition t1 = new TranslateTransition(Duration.millis(200), btn);
         t1.setToY(-17d);
-        PauseTransition p1=new PauseTransition(Duration.millis(30));
-        TranslateTransition t2=new TranslateTransition(Duration.millis(200),btn);
+        PauseTransition p1 = new PauseTransition(Duration.millis(30));
+        TranslateTransition t2 = new TranslateTransition(Duration.millis(200), btn);
         t2.setToY(0d);
 
-        SequentialTransition transition=new SequentialTransition(btn, t1,p1,t2);
+        SequentialTransition transition = new SequentialTransition(btn, t1, p1, t2);
         return transition;
     }
 }

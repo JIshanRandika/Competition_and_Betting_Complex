@@ -15,7 +15,8 @@ import lk.betting.dto.WinnersDTO;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface WinnersBO extends SuperBO{
+public interface WinnersBO extends SuperBO {
+
     public ObservableList<String> fillcomboBox() throws Exception;
 
     public boolean saveWinners(WinnersDTO win) throws SQLException, ClassNotFoundException, Exception;

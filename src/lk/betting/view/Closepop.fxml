@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="logoutpane" prefHeight="168.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.betting.controller.PopController">
+   <children>
+      <Label layoutX="39.0" layoutY="41.0" prefHeight="60.0" prefWidth="457.0" text="Are you sure you want to log out &amp; Leave from System?" textFill="#1c1239">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="yesbtn" buttonType="RAISED" layoutX="153.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleConfirmation" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #FF5722; -fx-background-radius: 5;" text="Yes" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="nobtn" buttonType="RAISED" layoutX="308.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleConfirmation" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: #FF5722; -fx-background-radius: 5;" text="No" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane fx:id="titleBar" prefHeight="35.0" prefWidth="528.0" style="-fx-background-color: #d11b1b;">
+         <children>
+            <JFXButton fx:id="closebtn" contentDisplay="GRAPHIC_ONLY" layoutX="493.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClose" prefHeight="35.0" prefWidth="35.0" ripplerFill="WHITE">
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="CLOSE" size="24" text="" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

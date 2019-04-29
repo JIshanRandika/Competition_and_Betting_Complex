@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 #titleBar{
     -fx-background-color:  #009fff;
-     -fx-background-insets: 0,1,2;
+    -fx-background-insets: 0,1,2;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 #btnClose{
@@ -20,9 +20,6 @@ and open the template in the editor.
         linear-gradient(#009fff,#00d2ff);
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 3,2,1;
-    /*-fx-padding: 3 30 3 30;*/
-    /*-fx-text-fill: black;*/
-    /*-fx-font-size: 14px;*/
 }
 
 #btnMin{
@@ -37,7 +34,7 @@ and open the template in the editor.
 
 #btnComfirmSeat{
     -fx-cursor: hand;
-     -fx-background-color: 
+    -fx-background-color: 
         linear-gradient(#f2f2f2, #d6d6d6),
         linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
         linear-gradient(#dddddd 0%, #f6f6f6 50%);
@@ -49,14 +46,9 @@ and open the template in the editor.
 }
 
 #pane01{
-     -fx-background-color: #ffffff;
-   /*-fx-background-border: 3;*/ 
-    /*-fx-background-radius: 10;*/ 
+    -fx-background-color: #ffffff;
     -fx-effect: dropshadow(three-pass-box, #009fff, 10, 5, 0, 0);
     -fx-border-color: #ffffff;
-    /*-fx-background-color: red;*/
-     /*-fx-effect: dropshadow( one-pass-box , black , 8 , 0 , 0 , 0 );*/
-    /*-fx-border-radius: 100px;*/
 }
 
 #btnlogout{
@@ -84,15 +76,6 @@ and open the template in the editor.
 
 #btnNew{
     -fx-cursor: hand;
-/*    -fx-background-color: 
-        linear-gradient(#f2f2f2, #d6d6d6),
-        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
-        linear-gradient(#dddddd 0%, #f6f6f6 50%);
-    -fx-background-radius: 8,7,6;
-    -fx-background-insets: 0,1,2;
-    -fx-text-fill: black;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #333333;*/
 }
 
 #logo{

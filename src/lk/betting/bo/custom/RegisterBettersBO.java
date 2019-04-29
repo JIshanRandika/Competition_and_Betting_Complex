@@ -13,7 +13,8 @@ import lk.betting.dto.BettersDTO;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface RegisterBettersBO extends SuperBO{
-                    public boolean registerBetters (BettersDTO better) throws SQLException, ClassNotFoundException, Exception;
+public interface RegisterBettersBO extends SuperBO {
+
+    public boolean registerBetters(BettersDTO better) throws SQLException, ClassNotFoundException, Exception;
 
 }

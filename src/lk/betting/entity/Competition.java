@@ -67,5 +67,5 @@ public class Competition {
     public void setTracks(String tracks) {
         this.tracks = tracks;
     }
-    
+
 }

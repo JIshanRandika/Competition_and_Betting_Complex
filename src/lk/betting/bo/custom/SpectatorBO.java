@@ -13,7 +13,8 @@ import lk.betting.dto.SpectatorDTO;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface SpectatorBO extends SuperBO{
-                    public boolean registerSpectator (SpectatorDTO spectator) throws SQLException, ClassNotFoundException, Exception;
+public interface SpectatorBO extends SuperBO {
+
+    public boolean registerSpectator(SpectatorDTO spectator) throws SQLException, ClassNotFoundException, Exception;
 
 }

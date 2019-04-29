@@ -14,14 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
@@ -54,9 +51,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.TicketsBO;
-import static lk.betting.controller.PlayersLevalsController.fillcomboBox;
 import lk.betting.db.DBConnection;
 import lk.betting.dto.TicketsDTO;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -67,7 +64,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author ASUS
  */
-public class TicketsFormController implements Initializable {
+public class TicketsFormController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -153,42 +150,35 @@ public class TicketsFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        moveWindow(titleBar);
+
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(30));
         transition.setToX(1000);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
         transition.play();
-        
-         Platform.runLater(new Runnable() {
-        @Override
-        public void run() {
-            txtSpectatorID.requestFocus();
-        }
-    });
-//        txtSpectatorID.requestFocus();
-//        try {
-//            bookedSeats();
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//         E1.setStyle("-fx-background-color:  #C40018");
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                txtSpectatorID.requestFocus();
+            }
+        });
         try {
             fillcombo();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         } catch (Exception ex) {
-            Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         }
         Image logo = new Image("/lk/betting/image/logo.png");
         this.logo.setImage(logo);
         Image image = new Image("/lk/betting/image/Tickets.jpg");
         this.image.setImage(image);
-        // TODO
     }
     static TicketsBO bo = (TicketsBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.TICKETS);
 
@@ -200,22 +190,11 @@ public class TicketsFormController implements Initializable {
         return bo.comfirmSeat(ti);
 
     }
-     public static ResultSet getseat(String cid) throws SQLException, ClassNotFoundException, Exception {
+
+    public static ResultSet getseat(String cid) throws SQLException, ClassNotFoundException, Exception {
         return bo.getseat(cid);
     }
-    
-    
-    
-    
-    
-
     private String seatNo;
-
-    @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-    }
 
     @FXML
     private void min(ActionEvent event) {
@@ -230,13 +209,9 @@ public class TicketsFormController implements Initializable {
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }
-    double x, y;
 
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
@@ -312,28 +287,27 @@ public class TicketsFormController implements Initializable {
                 a.show();
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
             }
 
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
 
         } catch (Exception ex) {
-            Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         }
-        
-        
+
         InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/Tickets.jasper");
         Connection connection = DBConnection.getInstance().getConnection();
         HashMap map = new HashMap();
-        map.put("sid",txtSpectatorID.getText());
-        map.put("cid",cobCompetitionID.getSelectionModel().getSelectedItem());
-//        map.put("cid", cobCompetitionID.getSelectionModel().getSelectedItem());
+        map.put("sid", txtSpectatorID.getText());
+        map.put("cid", cobCompetitionID.getSelectionModel().getSelectedItem());
         JasperPrint print = JasperFillManager.fillReport(is, map, connection);
         JasperViewer.viewReport(print, false);
-        
+
         clearAll();
         bookedSeats();
         txtSpectatorID.requestFocus();
@@ -341,7 +315,6 @@ public class TicketsFormController implements Initializable {
 
     @FXML
     private void selectedSeat(MouseEvent event) {
-//       E1.setStyle("-fx-background-color:  #C40018");
 
     }
 
@@ -356,7 +329,7 @@ public class TicketsFormController implements Initializable {
         E8.setStyle("-fx-background-color:  #8EA6B4");
         E9.setStyle("-fx-background-color:  #8EA6B4");
         E10.setStyle("-fx-background-color:  #8EA6B4");
-//        =========================
+
         F1.setStyle("-fx-background-color:  #8EA6B4");
         F2.setStyle("-fx-background-color:  #8EA6B4");
         F3.setStyle("-fx-background-color:  #8EA6B4");
@@ -369,20 +342,8 @@ public class TicketsFormController implements Initializable {
         F10.setStyle("-fx-background-color:  #8EA6B4");
         String seat;
 
-        
-        
-//        ResultSet rs=TicketsFormController.
-        
-         ResultSet resultSet=TicketsFormController.getseat(cobCompetitionID.getSelectionModel().getSelectedItem());
-        
-        
-        
+        ResultSet resultSet = TicketsFormController.getseat(cobCompetitionID.getSelectionModel().getSelectedItem());
         Connection connection = DBConnection.getInstance().getConnection();
-
-//        String sql = "select Sheat_No from tickets where C_ID=?";
-//        PreparedStatement pstm = connection.prepareStatement(sql);
-//        pstm.setObject(1, cobCompetitionID.getSelectionModel().getSelectedItem());
-//        ResultSet rst = pstm.executeQuery();
 
         while (resultSet.next()) {
             seat = resultSet.getString(1);
@@ -416,7 +377,7 @@ public class TicketsFormController implements Initializable {
             if (seat.equals("E10")) {
                 E10.setStyle("-fx-background-color:  #003399");
             }
-//            ===================
+
             if (seat.equals("F1")) {
                 F1.setStyle("-fx-background-color:  #003399");
             }
@@ -447,7 +408,6 @@ public class TicketsFormController implements Initializable {
             if (seat.equals("F10")) {
                 F10.setStyle("-fx-background-color:  #003399");
             }
-//            E1.setStyle("-fx-background-color:  #C40018");
         }
 
     }
@@ -456,14 +416,6 @@ public class TicketsFormController implements Initializable {
     private void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/HomeForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }
@@ -571,28 +523,29 @@ public class TicketsFormController implements Initializable {
 
     @FXML
     private void btnnew(ActionEvent event) throws IOException {
-         SequentialTransition fly=makeBtnFly(btnNew);
+        SequentialTransition fly = makeBtnFly(btnNew);
         fly.play();
-         fly.setOnFinished(event1 -> {
-             try {
-                 Stage stage = (Stage) this.anchor.getScene().getWindow();
-                 Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/SpectatorForm.fxml"));
-                 Scene scen = new Scene(rt);
-                 stage.setScene(scen);
-             } catch (IOException ex) {
-                 Logger.getLogger(TicketsFormController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         });
+        fly.setOnFinished(event1 -> {
+            try {
+                Stage stage = (Stage) this.anchor.getScene().getWindow();
+                Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/SpectatorForm.fxml"));
+                Scene scen = new Scene(rt);
+                stage.setScene(scen);
+            } catch (IOException ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Your System has some detail errors, Please call your manager", ButtonType.OK);
+                a.show();
+            }
+        });
     }
-    
-     public SequentialTransition makeBtnFly(JFXButton btn){
-        TranslateTransition t1=new TranslateTransition(Duration.millis(200),btn);
+
+    public SequentialTransition makeBtnFly(JFXButton btn) {
+        TranslateTransition t1 = new TranslateTransition(Duration.millis(200), btn);
         t1.setToY(-17d);
-        PauseTransition p1=new PauseTransition(Duration.millis(30));
-        TranslateTransition t2=new TranslateTransition(Duration.millis(200),btn);
+        PauseTransition p1 = new PauseTransition(Duration.millis(30));
+        TranslateTransition t2 = new TranslateTransition(Duration.millis(200), btn);
         t2.setToY(0d);
 
-        SequentialTransition transition=new SequentialTransition(btn, t1,p1,t2);
+        SequentialTransition transition = new SequentialTransition(btn, t1, p1, t2);
         return transition;
     }
 
@@ -600,18 +553,17 @@ public class TicketsFormController implements Initializable {
     private void conditions(MouseEvent event) {
         showDialog();
     }
-    
-    public void showDialog(){
+
+    public void showDialog() {
         Text title = new Text("Terms & Conditions For Tickets");
         title.setFont(Font.font("arial", FontWeight.SEMI_BOLD, FontPosture.REGULAR, 13));
-        String content = "First spectator should pay money,\nbefore booking a seat and issue Tickets "+
-                "\n\n"+
-                "Thanks\nJ. Ishan Randika,\nYour Manager";
+        String content = "First spectator should pay money,\nbefore booking a seat and issue Tickets "
+                + "\n\n"
+                + "Thanks\nJ. Ishan Randika,\nYour Manager";
         JFXDialogLayout dialogContent = new JFXDialogLayout();
         dialogContent.setHeading(title);
         dialogContent.setPrefWidth(280);
         dialogContent.setBody(new Text(content));
-
         JFXButton close = new JFXButton("Close");
         close.setButtonType(JFXButton.ButtonType.RAISED);
         close.setStyle("-fx-background-color: #FF9A00; -fx-text-fill: white");
@@ -622,8 +574,8 @@ public class TicketsFormController implements Initializable {
             dialog.close();
         });
         dialog.show();
-
         dialog.setOnDialogOpened(event -> anchor.setEffect(new GaussianBlur(5d)));
         dialog.setOnDialogClosed(event -> anchor.setEffect(new GaussianBlur(0d)));
     }
+
 }

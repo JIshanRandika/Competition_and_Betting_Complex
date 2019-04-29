@@ -14,17 +14,11 @@ import lk.betting.entity.Players;
  *
  * @author Your Name <Ishan Randika>
  */
-public class RegisterPlayersDAOImpl implements RegisterPlayersDAO{
+public class RegisterPlayersDAOImpl implements RegisterPlayersDAO {
 
     @Override
     public boolean registerPlayers(Players players) throws ClassNotFoundException, SQLException {
-        return CrudUtil.executeUpdate("insert into players values(?,?,?,?,?,?)", players.getPlNIC(), players.getPlName(), players.getPlAddress(), players.getPlMobile(),players.getPlBOD(),players.getPlAge());
+        return CrudUtil.executeUpdate("insert into players values(?,?,?,?,?,?)", players.getPlNIC(), players.getPlName(), players.getPlAddress(), players.getPlMobile(), players.getPlBOD(), players.getPlAge());
     }
-    
-//     @Override
-//     public boolean registerPlayers(Players players) throws Exception {
-//        return CrudUtil.executeUpdate("insert into players values(?,?,?,?,?,?)", players.getPlNIC(), players.getPlName(), players.getPlAddress(), players.getPlMobile(),players.getPlBOD(),players.getPlAge());
-//
-//
-//    }
+
 }

@@ -17,7 +17,6 @@ import lk.betting.dto.JudgersLevalsDTO;
  * @author Your Name <Ishan Randika>
  */
 public interface JudgersLevalsBO extends SuperBO {
-//                public boolean fillcomboBox(boolean fill) throws SQLException, ClassNotFoundException, Exception;
 
     public ObservableList<String> fillcomboBox() throws Exception;
 

@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class JudgersLevals {
+
     private String juNIC;
     private String c_ID;
     private boolean leval_01;
@@ -66,6 +67,5 @@ public class JudgersLevals {
     public void setLeval_03(boolean leval_03) {
         this.leval_03 = leval_03;
     }
-    
-    
+
 }

@@ -10,6 +10,7 @@ package lk.betting.dto;
  * @author Your Name <Ishan Randika>
  */
 public class WinnersDTO {
+
     private String competition_ID;
     private String le01_P_NIC;
     private String le02_P_NIC;
@@ -56,6 +57,5 @@ public class WinnersDTO {
     public void setLe03_P_NIC(String le03_P_NIC) {
         this.le03_P_NIC = le03_P_NIC;
     }
-    
-    
+
 }

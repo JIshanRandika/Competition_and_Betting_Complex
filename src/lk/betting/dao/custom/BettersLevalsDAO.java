@@ -22,11 +22,6 @@ public interface BettersLevalsDAO extends CrudDAO< BettersLevals, String> {
 
     public ResultSet getleval02Pnic(String nic, String betID) throws Exception;
 
-//    public boolean leval02Pnic(String nic, String betID) throws Exception;
-//
-//    public boolean leval01Pnic(String nic, String betID) throws Exception;
-//
-//    public boolean leval03Pnic(String nic, String betID) throws Exception;
     public ResultSet getleval01Pnic(String nic, String betID) throws Exception;
 
     public ResultSet getleval03Pnic(String nic, String betID) throws Exception;

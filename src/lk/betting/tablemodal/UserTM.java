@@ -10,6 +10,7 @@ package lk.betting.tablemodal;
  * @author Your Name <Ishan Randika>
  */
 public class UserTM {
+
     String id;
     String name;
     String nic;
@@ -86,14 +87,5 @@ public class UserTM {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-   
-   
-    
-    
-    
 
- 
-    
-    
 }

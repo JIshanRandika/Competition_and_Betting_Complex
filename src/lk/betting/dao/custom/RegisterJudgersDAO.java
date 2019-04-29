@@ -8,12 +8,12 @@ package lk.betting.dao.custom;
 import lk.betting.dao.CrudDAO;
 import lk.betting.entity.Judgers;
 
-
 /**
  *
  * @author Your Name <Ishan Randika>
  */
-public interface RegisterJudgersDAO extends CrudDAO<Judgers, String>{
-            public boolean registerJudgers(Judgers judgers) throws Exception;
+public interface RegisterJudgersDAO extends CrudDAO<Judgers, String> {
+
+    public boolean registerJudgers(Judgers judgers) throws Exception;
 
 }

@@ -5,8 +5,6 @@
  */
 package lk.betting.entity;
 
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -14,6 +12,7 @@ import java.util.Date;
  * @author Your Name <Ishan Randika>
  */
 public class CreateCompetition {
+
     private String competitionID;
     private Date competitionDate;
     private String competitionTime;
@@ -71,8 +70,4 @@ public class CreateCompetition {
         this.tracks = tracks;
     }
 
-    
-    
-    
-    
 }

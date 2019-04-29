@@ -5,7 +5,6 @@
  */
 package lk.betting.dao;
 
-import lk.betting.dao.custom.BettersLevalsDAO;
 import lk.betting.dao.custom.impl.BettersLevalsDAOImpl;
 import lk.betting.dao.custom.impl.CreateBetDAOImpl;
 import lk.betting.dao.custom.impl.CreateCompetitionDAOImpl;
@@ -56,8 +55,6 @@ public class DAOFactory {
                 return new SpectatorDAOImpl();
             case WINNERS:
                 return new WinnersDAOImpl();
-//            case PLAYERS:
-////                return new OrderDetailDAOImpl();
             case BETTERSLEVALS:
                 return new BettersLevalsDAOImpl();
             case PLAYERSLEVALS:

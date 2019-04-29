@@ -20,9 +20,8 @@ import lk.betting.entity.BettersLevals;
  */
 public class BettersLevalsBOImpl implements BettersLevalsBO {
 
-        BettersLevalsDAO dao = (BettersLevalsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.BETTERSLEVALS);
+    BettersLevalsDAO dao = (BettersLevalsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.BETTERSLEVALS);
 
-    
     @Override
     public ObservableList<String> fillcomboBox() throws Exception {
         return dao.fillcomboBox();
@@ -30,37 +29,22 @@ public class BettersLevalsBOImpl implements BettersLevalsBO {
 
     @Override
     public boolean saveBettersLevals(BettersLevalsDTO bt) throws SQLException, ClassNotFoundException, Exception {
-        return dao.saveBettersLevals(new BettersLevals(bt.getB_NIC(),bt.getB_ID(),bt.getLe01_P_NIC(),bt.getLe02_P_NIC(),bt.getLe03_P_NIC()));
+        return dao.saveBettersLevals(new BettersLevals(bt.getB_NIC(), bt.getB_ID(), bt.getLe01_P_NIC(), bt.getLe02_P_NIC(), bt.getLe03_P_NIC()));
     }
 
     @Override
-    public ResultSet getleval02Pnic(String nic,String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval02Pnic(nic,betID);
+    public ResultSet getleval02Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
+        return dao.getleval02Pnic(nic, betID);
     }
-
-//    @Override
-//    public boolean leval02Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return dao.leval02Pnic(nic,betID);
-//    }
-//
-//    @Override
-//    public boolean leval01Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return dao.leval03Pnic(nic,betID);
-//    }
-//
-//    @Override
-//    public boolean leval03Pnic(String nic, String betID) throws SQLException, ClassNotFoundException, Exception {
-//        return dao.leval01Pnic(nic,betID);
-//    }
 
     @Override
     public ResultSet getleval01Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval01Pnic(nic,betID);
+        return dao.getleval01Pnic(nic, betID);
     }
 
     @Override
     public ResultSet getleval03Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval03Pnic(nic,betID);
+        return dao.getleval03Pnic(nic, betID);
     }
 
 }

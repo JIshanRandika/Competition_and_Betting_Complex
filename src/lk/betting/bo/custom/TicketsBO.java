@@ -15,13 +15,12 @@ import lk.betting.dto.TicketsDTO;
  *
  * @author ASUS
  */
-public interface TicketsBO extends SuperBO{
+public interface TicketsBO extends SuperBO {
 
     public ObservableList<String> fillcomboBox() throws Exception;
-
 
     public boolean comfirmSeat(TicketsDTO ti) throws SQLException, ClassNotFoundException, Exception;
 
     public ResultSet getseat(String cid) throws ClassNotFoundException, SQLException, Exception;
-    
+
 }

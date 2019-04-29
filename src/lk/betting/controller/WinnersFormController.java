@@ -15,8 +15,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -44,6 +42,7 @@ import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.WinnersBO;
 import lk.betting.db.DBConnection;
 import lk.betting.dto.WinnersDTO;
+import lk.betting.commonmethods.CommonMethods;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -54,7 +53,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Your Name <Ishan Randika>
  */
-public class WinnersFormController implements Initializable {
+public class WinnersFormController extends CommonMethods implements Initializable {
 
     @FXML
     private Pane titleBar;
@@ -96,10 +95,11 @@ public class WinnersFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        moveWindow(titleBar);
+
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
-//        transition.setToY(500);
         transition.setAutoReverse(true);
         transition.setCycleCount(Animation.INDEFINITE);
         transition.setNode(ishan);
@@ -119,11 +119,12 @@ public class WinnersFormController implements Initializable {
 
         try {
             fillcombo();
-            // TODO
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(WinnersFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         } catch (Exception ex) {
-            Logger.getLogger(WinnersFormController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
         }
     }
 
@@ -139,9 +140,8 @@ public class WinnersFormController implements Initializable {
 
     private void fillcombo() throws SQLException, ClassNotFoundException, Exception {
         cobCompetitionID.setItems(fillcomboBox());
-
     }
-    
+
     public static ResultSet getleval02Pnic(String nic, String comID) throws SQLException, ClassNotFoundException, Exception {
         return bo.getleval01Pnic(nic, comID);
     }
@@ -161,24 +161,12 @@ public class WinnersFormController implements Initializable {
     }
 
     @FXML
-    private void close(ActionEvent event) {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
-        stage.close();
-    }
-
-    double x, y;
-
-    @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) titleBar.getScene().getWindow();
-        stage.setX(x = event.getScreenX());
-        stage.setY(y = event.getScreenY());
     }
 
     @FXML
     private void leval_01_PlNIC(ActionEvent event) throws SQLException, Exception {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_01_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_01_PlNIC.getText()).matches()) {
-//            txtLeval_02_PlNIC.requestFocus();
             ResultSet resultSet = WinnersFormController.getleval01Pnic(txtLeval_01_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
             boolean empty = true;
             while (resultSet.next()) {
@@ -189,10 +177,8 @@ public class WinnersFormController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
                 a.show();
                 txtLeval_01_PlNIC.requestFocus();
-                System.out.println("empty");
             } else {
                 txtLeval_02_PlNIC.requestFocus();
-                System.out.println("Okay");
             }
 
         } else {
@@ -205,8 +191,6 @@ public class WinnersFormController implements Initializable {
     @FXML
     private void leval_02_PlNIC(ActionEvent event) throws SQLException, Exception {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_02_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_02_PlNIC.getText()).matches()) {
-//            txtLeval_03_PlNIC.requestFocus();
-
             ResultSet resultSet = WinnersFormController.getleval02Pnic(txtLeval_02_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
             boolean empty = true;
             while (resultSet.next()) {
@@ -233,7 +217,6 @@ public class WinnersFormController implements Initializable {
     @FXML
     private void leval_03_PlNIC(ActionEvent event) throws SQLException, Exception {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtLeval_03_PlNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtLeval_03_PlNIC.getText()).matches()) {
-//            btnSave.fire();
             ResultSet resultSet = WinnersFormController.getleval01Pnic(txtLeval_03_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
             boolean empty = true;
             while (resultSet.next()) {
@@ -246,13 +229,10 @@ public class WinnersFormController implements Initializable {
                 txtLeval_03_PlNIC.requestFocus();
                 System.out.println("empty");
             } else {
-                 btnSave.fire();
+                btnSave.fire();
                 System.out.println("Okay");
             }
 
-            
-            
-            
         } else {
             txtLeval_03_PlNIC.requestFocus();
             Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-03-Player's NIC format is Invalid", ButtonType.OK);
@@ -281,18 +261,16 @@ public class WinnersFormController implements Initializable {
                 a.show();
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
             }
-
         } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + e.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
 
         } catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "You Cannot Input :" + ex.getMessage(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
-            Logger.getLogger(WinnersFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
         clearAll();
 
@@ -313,14 +291,6 @@ public class WinnersFormController implements Initializable {
     private void logo(MouseEvent event) throws IOException {
         Stage stage = (Stage) this.anchor.getScene().getWindow();
         Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/HomeForm.fxml"));
-        Scene scen = new Scene(rt);
-        stage.setScene(scen);
-    }
-
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        Stage stage = (Stage) this.anchor.getScene().getWindow();
-        Parent rt = FXMLLoader.load(getClass().getResource("/lk/betting/view/LoginForm.fxml"));
         Scene scen = new Scene(rt);
         stage.setScene(scen);
     }

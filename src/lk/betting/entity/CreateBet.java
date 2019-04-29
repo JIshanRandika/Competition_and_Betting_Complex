@@ -10,6 +10,7 @@ package lk.betting.entity;
  * @author Your Name <Ishan Randika>
  */
 public class CreateBet {
+
     private String competitionID;
     private String betID;
 
@@ -36,6 +37,5 @@ public class CreateBet {
     public void setBetID(String betID) {
         this.betID = betID;
     }
-    
-    
+
 }

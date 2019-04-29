@@ -14,7 +14,6 @@ import lk.betting.entity.JudgersLevals;
  * @author Your Name <Ishan Randika>
  */
 public interface JudgersLevalsDAO extends CrudDAO< JudgersLevals, String> {
-//            public boolean fillcomboBox(boolean fill) throws Exception;
 
     public ObservableList<String> fillcomboBox() throws Exception;
 

@@ -17,7 +17,7 @@ import lk.betting.entity.PlayersLevals;
  *
  * @author Your Name <Ishan Randika>
  */
-public class PlayersLevalsDAOImpl implements PlayersLevalsDAO{
+public class PlayersLevalsDAOImpl implements PlayersLevalsDAO {
 
     @Override
     public ObservableList<String> fillcomboBox() throws Exception {
@@ -32,7 +32,7 @@ public class PlayersLevalsDAOImpl implements PlayersLevalsDAO{
 
     @Override
     public boolean savePlayersLevals(PlayersLevals players) throws ClassNotFoundException, SQLException {
-        return CrudUtil.executeUpdate("insert into playerslevals values(?,?,?,?,?)", players.getPlNIC(), players.getC_ID(), players.isLeval_01(), players.isLeval_02(),players.isLeval_03());
+        return CrudUtil.executeUpdate("insert into playerslevals values(?,?,?,?,?)", players.getPlNIC(), players.getC_ID(), players.isLeval_01(), players.isLeval_02(), players.isLeval_03());
     }
-    
+
 }

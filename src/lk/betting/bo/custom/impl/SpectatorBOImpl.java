@@ -16,12 +16,13 @@ import lk.betting.entity.Spectator;
  *
  * @author Your Name <Ishan Randika>
  */
-public class SpectatorBOImpl implements SpectatorBO{
-        SpectatorDAO dao = (SpectatorDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SPECTATOR);
+public class SpectatorBOImpl implements SpectatorBO {
+
+    SpectatorDAO dao = (SpectatorDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SPECTATOR);
 
     @Override
     public boolean registerSpectator(SpectatorDTO spectator) throws SQLException, ClassNotFoundException, Exception {
         return dao.registerSpectator(new Spectator(spectator.getSpectatorID(), spectator.getSpectatorName(), spectator.getSpectatorAddress(), spectator.getSpectatorMobile()));
     }
-    
+
 }

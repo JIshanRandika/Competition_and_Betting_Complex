@@ -80,6 +80,4 @@ public class BettersDTO {
         this.btAge = btAge;
     }
 
-   
-    
 }

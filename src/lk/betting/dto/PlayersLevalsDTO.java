@@ -67,6 +67,5 @@ public class PlayersLevalsDTO {
     public void setLeval_03(boolean leval_03) {
         this.leval_03 = leval_03;
     }
-    
-    
+
 }

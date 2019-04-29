@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Your Name <Ishan Randika>
  */
 public class PlayersDTO {
+
     private String plNIC;
     private String plName;
     private String plMobile;
@@ -79,6 +80,4 @@ public class PlayersDTO {
         this.plAge = plAge;
     }
 
-    
-    
 }

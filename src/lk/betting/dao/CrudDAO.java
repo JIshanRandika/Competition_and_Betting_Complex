@@ -9,6 +9,6 @@ package lk.betting.dao;
  *
  * @author Your Name <Ishan Randika>
  */
-public interface CrudDAO<T,ID> extends SuperDAO {
-     
+public interface CrudDAO<T, ID> extends SuperDAO {
+
 }

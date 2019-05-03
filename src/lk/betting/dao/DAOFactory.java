@@ -11,6 +11,7 @@ import lk.betting.dao.custom.impl.CreateCompetitionDAOImpl;
 import lk.betting.dao.custom.impl.JudgersLevalsDAOImpl;
 import lk.betting.dao.custom.impl.LoginDAOImpl;
 import lk.betting.dao.custom.impl.PlayersLevalsDAOImpl;
+import lk.betting.dao.custom.impl.QueryDAOImpl;
 import lk.betting.dao.custom.impl.RegisterBettersDAOImpl;
 import lk.betting.dao.custom.impl.RegisterJudgersDAOImpl;
 import lk.betting.dao.custom.impl.RegisterPlayersDAOImpl;
@@ -38,7 +39,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-      TICKETS, CREATEBET, CREATECOMPETITION, JUDGERSLEVALS, BETTERSLEVALS, PLAYERSLEVALS, BET, LOGIN, REGISTERBETTERS, COMPETITION, REGISTERJUDGERS, REGISTERPLAYERS, PLAYERS, SPECTATOR, USERS, WINNERS
+        TICKETS, QUERY, CREATEBET, CREATECOMPETITION, JUDGERSLEVALS, BETTERSLEVALS, PLAYERSLEVALS, BET, LOGIN, REGISTERBETTERS, COMPETITION, REGISTERJUDGERS, REGISTERPLAYERS, PLAYERS, SPECTATOR, USERS, WINNERS
     }
 
     public SuperDAO getDAO(DAOTypes types) {
@@ -67,8 +68,10 @@ public class DAOFactory {
                 return new CreateCompetitionDAOImpl();
             case CREATEBET:
                 return new CreateBetDAOImpl();
-                case TICKETS:
+            case TICKETS:
                 return new TicketsDAOImpl();
+            case QUERY:
+                return new QueryDAOImpl();
             default:
                 return null;
         }

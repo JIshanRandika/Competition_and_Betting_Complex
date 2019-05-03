@@ -34,19 +34,4 @@ public class BettersLevalsDAOImpl implements BettersLevalsDAO {
         return CrudUtil.executeUpdate("insert into betterslevals values(?,?,?,?,?)", bettersLevals.getB_NIC(), bettersLevals.getB_ID(), bettersLevals.getLe01_P_NIC(), bettersLevals.getLe02_P_NIC(), bettersLevals.getLe03_P_NIC());
     }
 
-    @Override
-    public ResultSet getleval02Pnic(String nic, String betID) throws Exception {
-        return CrudUtil.executeQuery("select L2 from bet left join playerslevals using(C_ID) where P_NIC=? && B_ID=?", nic, betID);
-    }
-
-    @Override
-    public ResultSet getleval01Pnic(String nic, String betID) throws Exception {
-        return CrudUtil.executeQuery("select L1 from bet left join playerslevals using(C_ID) where P_NIC=? && B_ID=?", nic, betID);
-    }
-
-    @Override
-    public ResultSet getleval03Pnic(String nic, String betID) throws Exception {
-        return CrudUtil.executeQuery("select L3 from bet left join playerslevals using(C_ID) where P_NIC=? && B_ID=?", nic, betID);
-    }
-
 }

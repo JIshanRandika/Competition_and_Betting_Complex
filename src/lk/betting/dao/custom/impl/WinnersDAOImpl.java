@@ -33,20 +33,4 @@ public class WinnersDAOImpl implements WinnersDAO {
     public boolean saveWinners(Winners winners) throws Exception {
         return CrudUtil.executeUpdate("insert into winners values(?,?,?,?)", winners.getCompetition_ID(), winners.getLe01_P_NIC(), winners.getLe02_P_NIC(), winners.getLe03_P_NIC());
     }
-
-    @Override
-    public ResultSet getleval02Pnic(String nic, String comID) throws Exception {
-        return CrudUtil.executeQuery("select L2 from bet left join playerslevals using(C_ID) where P_NIC=? && C_ID=?", nic, comID);
-    }
-
-    @Override
-    public ResultSet getleval01Pnic(String nic, String comID) throws Exception {
-        return CrudUtil.executeQuery("select L1 from bet left join playerslevals using(C_ID) where P_NIC=? && C_ID=?", nic, comID);
-    }
-
-    @Override
-    public ResultSet getleval03Pnic(String nic, String comID) throws Exception {
-        return CrudUtil.executeQuery("select L3 from bet left join playerslevals using(C_ID) where P_NIC=? && C_ID=?", nic, comID);
-    }
-
 }

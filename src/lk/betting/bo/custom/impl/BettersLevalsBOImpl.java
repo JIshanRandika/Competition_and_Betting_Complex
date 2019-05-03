@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import lk.betting.bo.custom.BettersLevalsBO;
 import lk.betting.dao.DAOFactory;
 import lk.betting.dao.custom.BettersLevalsDAO;
+import lk.betting.dao.custom.QueryDAO;
 import lk.betting.dto.BettersLevalsDTO;
 import lk.betting.entity.BettersLevals;
 
@@ -21,6 +22,8 @@ import lk.betting.entity.BettersLevals;
 public class BettersLevalsBOImpl implements BettersLevalsBO {
 
     BettersLevalsDAO dao = (BettersLevalsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.BETTERSLEVALS);
+    
+    QueryDAO qudao = (QueryDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.QUERY);
 
     @Override
     public ObservableList<String> fillcomboBox() throws Exception {
@@ -34,17 +37,17 @@ public class BettersLevalsBOImpl implements BettersLevalsBO {
 
     @Override
     public ResultSet getleval02Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval02Pnic(nic, betID);
+        return qudao.betLgetleval02Pnic(nic, betID);
     }
 
     @Override
     public ResultSet getleval01Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval01Pnic(nic, betID);
+        return qudao.betLgetleval01Pnic(nic, betID);
     }
 
     @Override
     public ResultSet getleval03Pnic(String nic, String betID) throws ClassNotFoundException, SQLException, Exception {
-        return dao.getleval03Pnic(nic, betID);
+        return qudao.betLgetleval03Pnic(nic, betID);
     }
 
 }

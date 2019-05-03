@@ -20,10 +20,4 @@ public interface WinnersDAO extends CrudDAO< Winners, String> {
 
     public boolean saveWinners(Winners winners) throws Exception;
 
-    public ResultSet getleval02Pnic(String nic, String comID) throws Exception;
-
-    public ResultSet getleval01Pnic(String nic, String comID) throws Exception;
-
-    public ResultSet getleval03Pnic(String nic, String comID) throws Exception;
-
 }

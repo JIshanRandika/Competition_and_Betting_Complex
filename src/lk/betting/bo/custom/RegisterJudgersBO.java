@@ -17,4 +17,8 @@ public interface RegisterJudgersBO extends SuperBO {
 
     public boolean registerJudgers(JudgersDTO login) throws SQLException, ClassNotFoundException, Exception;
 
+    public JudgersDTO searchJu(String juNIC) throws SQLException, ClassNotFoundException, Exception;
+
+    public boolean UpdateJudgers(JudgersDTO judgers) throws SQLException, ClassNotFoundException, Exception;
+
 }

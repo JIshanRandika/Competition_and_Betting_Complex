@@ -16,4 +16,8 @@ public interface RegisterJudgersDAO extends CrudDAO<Judgers, String> {
 
     public boolean registerJudgers(Judgers judgers) throws Exception;
 
+    public Judgers search(String juNIC) throws Exception;
+
+    public boolean UpdateJudgers(Judgers judgers) throws Exception;
+
 }

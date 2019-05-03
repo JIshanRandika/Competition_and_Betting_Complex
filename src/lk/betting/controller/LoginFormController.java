@@ -249,5 +249,5 @@ public class LoginFormController extends CommonMethods implements Initializable 
         dialog.setOnDialogOpened(event -> anchor.setEffect(new GaussianBlur(5d)));
         dialog.setOnDialogClosed(event -> anchor.setEffect(new GaussianBlur(0d)));
     }
-
+    
 }

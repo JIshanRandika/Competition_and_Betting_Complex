@@ -221,11 +221,11 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="txtJuNIC" layoutX="155.0" layoutY="116.0" onAction="#juNIC" prefHeight="44.0" prefWidth="321.0" />
+                        <JFXTextField fx:id="txtJuNIC" layoutX="155.0" layoutY="116.0" onKeyPressed="#jadgeNIC" prefHeight="44.0" prefWidth="321.0" />
                         <JFXTextField fx:id="txtJuName" layoutX="157.0" layoutY="38.0" onAction="#juName" prefHeight="44.0" prefWidth="322.0" />
                         <JFXTextField fx:id="txtJuMobile" layoutX="155.0" layoutY="203.0" onAction="#juMobile" prefHeight="44.0" prefWidth="324.0" />
                         <JFXTextField fx:id="txtJuEmail" layoutX="154.0" layoutY="295.0" onAction="#juEmail" prefHeight="44.0" prefWidth="324.0" />
-                        <JFXButton fx:id="btnJuRegister" layoutX="140.0" layoutY="360.0" onAction="#juregister" prefHeight="36.0" prefWidth="359.0" text="Register">
+                        <JFXButton fx:id="btnJuRegister" layoutX="74.0" layoutY="360.0" onAction="#juregister" prefHeight="44.0" prefWidth="218.0" text="Register">
                            <ripplerFill>
                               <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                                  <stops>
@@ -234,6 +234,21 @@
                                  </stops>
                               </RadialGradient>
                            </ripplerFill></JFXButton>
+                              <JFXButton fx:id="btnJuUpdate" layoutX="320.0" layoutY="360.0" onAction="#juUpdate" prefHeight="44.0" prefWidth="222.0" text="Update">
+                                 <ripplerFill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                       <stops>
+                                          <Stop color="#00bbff" />
+                                          <Stop color="#0173b5" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </ripplerFill>
+                              </JFXButton>
+                              <Label fx:id="juconditions" layoutX="476.0" layoutY="22.0" onMouseClicked="#juconditions" prefHeight="19.0" prefWidth="111.0" text="Term &amp; Conditions" textFill="#4d00ff">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
                      </children></AnchorPane>
                </content>
             </Tab>

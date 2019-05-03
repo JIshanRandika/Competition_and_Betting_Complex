@@ -252,7 +252,6 @@ public class UsersFormController extends CommonMethods implements Initializable 
                 e.printStackTrace();
             }
             if (updateUser) {
-                System.out.println("Test 1");
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "User Updated...!", ButtonType.OK);
                 a.show();
                 ;

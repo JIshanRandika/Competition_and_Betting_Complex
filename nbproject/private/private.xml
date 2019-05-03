@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/controller/TicketsFormController.java</file>
-            <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/controller/OrganizingFormController.java</file>
-            <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/controller/BettersLevalsController.java</file>
+            <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/db/DBConnection.java</file>
             <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/main/Betting.java</file>
-            <file>file:/C:/Project%20Betting/Betting-06/src/lk/betting/controller/WonReportsController.java</file>
         </group>
     </open-files>
 </project-private>

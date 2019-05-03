@@ -38,6 +38,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -144,6 +146,10 @@ public class RegisterFormController extends CommonMethods implements Initializab
     private Label conditions;
     @FXML
     private Label ishan;
+    @FXML
+    private JFXButton btnJuUpdate;
+    @FXML
+    private Label juconditions;
 
     /**
      * Initializes the controller class.
@@ -174,18 +180,6 @@ public class RegisterFormController extends CommonMethods implements Initializab
 
     @FXML
     private void dragged(MouseEvent event) {
-    }
-
-    @FXML
-    private void juNIC(ActionEvent event) {
-        if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtJuNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtJuNIC.getText()).matches()) {
-            txtJuMobile.requestFocus();
-        } else {
-            txtJuNIC.requestFocus();
-            Alert a = new Alert(Alert.AlertType.ERROR, "Input Judjer's NIC format is Invalid", ButtonType.OK);
-            a.show();
-        }
-
     }
 
     @FXML
@@ -240,9 +234,8 @@ public class RegisterFormController extends CommonMethods implements Initializab
             boolean addCom = RegisterFormController.registerJudgers(judgers);
 
             if (addCom) {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
                 a.show();
-
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
@@ -531,6 +524,7 @@ public class RegisterFormController extends CommonMethods implements Initializab
             Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
         }
+
         InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/BettersRegister.jasper");
         Connection connection = DBConnection.getInstance().getConnection();
         HashMap map = new HashMap();
@@ -608,6 +602,7 @@ public class RegisterFormController extends CommonMethods implements Initializab
         title.setFont(Font.font("arial", FontWeight.SEMI_BOLD, FontPosture.REGULAR, 13));
         String content = "Children can not regster as a Player or,\na Better. "
                 + "They can get only Spectator \nTickets for enterance.If the age over 18 \nwho can register as a Player or a Better\n\n"
+                + "Please Enter Correct & Permenant Details \nPlayers & Betters can't change or Update their\nDetails \n\n"
                 + "Thanks\nJ. Ishan Randika,\nYour Manager";
         JFXDialogLayout dialogContent = new JFXDialogLayout();
         dialogContent.setHeading(title);
@@ -634,4 +629,114 @@ public class RegisterFormController extends CommonMethods implements Initializab
         showDialog();
 
     }
+
+    public static JudgersDTO searchJu(String juNIC) throws ClassNotFoundException, SQLException, Exception {
+        return bo.searchJu(juNIC);
+    }
+
+    @FXML
+    private void jadgeNIC(KeyEvent event) throws SQLException, Exception {
+
+        if (event.getCode() == KeyCode.SPACE) {
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtJuNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtJuNIC.getText()).matches()) {
+
+                String juNIC = txtJuNIC.getText();
+                JudgersDTO searchJudgers = RegisterFormController.searchJu(juNIC);
+                clearAllJudger();
+                txtJuName.setText(searchJudgers.getJuName());
+                txtJuNIC.setText(searchJudgers.getJuNIC());
+                txtJuMobile.setText(searchJudgers.getJuMobile());
+                txtJuEmail.setText(searchJudgers.getJuEmail());
+
+            } else {
+                txtJuNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Judjer's NIC format is Invalid", ButtonType.OK);
+                a.show();
+            }
+
+        }
+        if (event.getCode() == KeyCode.ENTER) {
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtJuNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtJuNIC.getText()).matches()) {
+                txtJuMobile.requestFocus();
+
+            } else {
+                txtJuNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Judjer's NIC format is Invalid", ButtonType.OK);
+                a.show();
+            }
+        }
+    }
+
+    public static boolean UpdateJudgers(JudgersDTO judgers) throws SQLException, ClassNotFoundException, Exception {
+        return bo.UpdateJudgers(judgers);
+    }
+
+    @FXML
+    private void juUpdate(ActionEvent event) {
+
+        try {
+            String juName = txtJuName.getText();
+            String juNIC = txtJuNIC.getText();
+            String juMobile = txtJuMobile.getText();
+            String juEmail = txtJuEmail.getText();
+
+            JudgersDTO judgers = new JudgersDTO();
+            judgers.setJuName(juName);
+            judgers.setJuNIC(juNIC);
+            judgers.setJuEmail(juEmail);
+            judgers.setJuMobile(juMobile);
+
+            boolean addCom = RegisterFormController.UpdateJudgers(judgers);
+
+            if (addCom) {
+                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                a.show();
+
+            } else {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
+            }
+
+        } catch (NumberFormatException e) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
+
+        } catch (Exception ex) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            a.show();
+        }
+
+    }
+
+    @FXML
+    private void juconditions(MouseEvent event) {
+        showDialogju();
+    }
+
+    public void showDialogju() {
+        Text title = new Text("Terms & Conditions For Judgers Registation");
+        title.setFont(Font.font("arial", FontWeight.SEMI_BOLD, FontPosture.REGULAR, 13));
+        String content = "Please enter correct & permenant details,because judgers \ncan change only  "
+                + "their mobile number before their registation. \n\n"
+                + "Thanks\nJ. Ishan Randika,\nYour Manager";
+        JFXDialogLayout dialogContent = new JFXDialogLayout();
+        dialogContent.setHeading(title);
+        dialogContent.setPrefWidth(280);
+        dialogContent.setBody(new Text(content));
+
+        JFXButton close = new JFXButton("Close");
+        close.setButtonType(JFXButton.ButtonType.RAISED);
+        close.setStyle("-fx-background-color: #FF9A00; -fx-text-fill: white");
+        dialogContent.setActions(close);
+        JFXDialog dialog = new JFXDialog(stackpane, dialogContent, JFXDialog.DialogTransition.TOP);
+        dialog.setOverlayClose(false);
+        close.setOnAction(event -> {
+            dialog.close();
+        });
+        dialog.show();
+
+        dialog.setOnDialogOpened(event -> anchor.setEffect(new GaussianBlur(5d)));
+        dialog.setOnDialogClosed(event -> anchor.setEffect(new GaussianBlur(0d)));
+    }
+
 }

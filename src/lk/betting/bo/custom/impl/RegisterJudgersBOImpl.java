@@ -27,4 +27,14 @@ public class RegisterJudgersBOImpl implements RegisterJudgersBO {
 
     }
 
+    @Override
+    public JudgersDTO searchJu(String juNIC) throws SQLException, ClassNotFoundException, Exception {
+        Judgers search = dao.search(juNIC);
+        return new JudgersDTO(search.getJuNIC(), search.getJuName(), search.getJuMobile(), search.getJuEmail());    }
+
+    @Override
+    public boolean UpdateJudgers(JudgersDTO judgers) throws SQLException, ClassNotFoundException, Exception {
+        return dao.UpdateJudgers(new Judgers(judgers.getJuNIC(), judgers.getJuName(), judgers.getJuMobile(), judgers.getJuEmail()));
+    }
+
 }

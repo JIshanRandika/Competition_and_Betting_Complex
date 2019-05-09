@@ -201,10 +201,8 @@ public class WinnersFormController extends CommonMethods implements Initializabl
                 Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
                 a.show();
                 txtLeval_02_PlNIC.requestFocus();
-                System.out.println("empty");
             } else {
                 txtLeval_03_PlNIC.requestFocus();
-                System.out.println("Okay");
             }
 
         } else {
@@ -227,10 +225,8 @@ public class WinnersFormController extends CommonMethods implements Initializabl
                 Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
                 a.show();
                 txtLeval_03_PlNIC.requestFocus();
-                System.out.println("empty");
             } else {
                 btnSave.fire();
-                System.out.println("Okay");
             }
 
         } else {
@@ -245,25 +241,84 @@ public class WinnersFormController extends CommonMethods implements Initializabl
         try {
             String competition_ID = cobCompetitionID.getSelectionModel().getSelectedItem();
             String le01_P_NIC = txtLeval_01_PlNIC.getText();
-            String le02_P_NIC = txtLeval_02_PlNIC.getText();
-            String le03_P_NIC = txtLeval_03_PlNIC.getText();
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(le01_P_NIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(le01_P_NIC).matches()) {
+                ResultSet resultSet = WinnersFormController.getleval01Pnic(txtLeval_01_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
+                boolean empty = true;
+                while (resultSet.next()) {
+                    empty = false;
+                }
 
-            WinnersDTO win = new WinnersDTO();
-            win.setCompetition_ID(competition_ID);
-            win.setLe01_P_NIC(le01_P_NIC);
-            win.setLe02_P_NIC(le02_P_NIC);
-            win.setLe03_P_NIC(le03_P_NIC);
+                if (empty) {
+                    Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
+                    a.show();
+                    txtLeval_01_PlNIC.requestFocus();
+                } else {
+                    String le02_P_NIC = txtLeval_02_PlNIC.getText();
+                    if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(le02_P_NIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(le02_P_NIC).matches()) {
+                        resultSet = WinnersFormController.getleval02Pnic(txtLeval_02_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
+                        empty = true;
+                        while (resultSet.next()) {
+                            empty = false;
+                        }
 
-            boolean addCom = WinnersFormController.saveWinners(win);
+                        if (empty) {
+                            Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
+                            a.show();
+                            txtLeval_02_PlNIC.requestFocus();
+                        } else {
+                            String le03_P_NIC = txtLeval_03_PlNIC.getText();
+                            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(le03_P_NIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(le03_P_NIC).matches()) {
+                                resultSet = WinnersFormController.getleval01Pnic(txtLeval_03_PlNIC.getText(), cobCompetitionID.getSelectionModel().getSelectedItem());
+                                empty = true;
+                                while (resultSet.next()) {
+                                    empty = false;
+                                }
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
+                                if (empty) {
+                                    Alert a = new Alert(Alert.AlertType.WARNING, "This Player will not partisipate to leval 01 in this competition", ButtonType.OK);
+                                    a.show();
+                                    txtLeval_03_PlNIC.requestFocus();
+                                } else {
+                                    WinnersDTO win = new WinnersDTO();
+                                    win.setCompetition_ID(competition_ID);
+                                    win.setLe01_P_NIC(le01_P_NIC);
+                                    win.setLe02_P_NIC(le02_P_NIC);
+                                    win.setLe03_P_NIC(le03_P_NIC);
+
+                                    boolean addCom = WinnersFormController.saveWinners(win);
+
+                                    if (addCom) {
+                                        Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                                        a.show();
+
+                                    } else {
+                                        Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                                        a.show();
+                                    }
+
+                                }
+
+                            } else {
+                                txtLeval_03_PlNIC.requestFocus();
+                                Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-03-Player's NIC format is Invalid", ButtonType.OK);
+                                a.show();
+                            }
+
+                        }
+
+                    } else {
+                        txtLeval_02_PlNIC.requestFocus();
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-02-Player's NIC format is Invalid", ButtonType.OK);
+                        a.show();
+                    }
+                }
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtLeval_01_PlNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-01-Player's NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
+
         } catch (NumberFormatException e) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
@@ -278,7 +333,8 @@ public class WinnersFormController extends CommonMethods implements Initializabl
     }
 
     @FXML
-    private void addCompetitionID(KeyEvent event) {
+    private void addCompetitionID(KeyEvent event
+    ) {
         if (event.getCode() == KeyCode.DOWN || event.getCode() == KeyCode.UP) {
             System.out.println("");
         }

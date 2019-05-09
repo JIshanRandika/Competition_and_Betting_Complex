@@ -219,51 +219,58 @@ public class PlayersLevalsController extends CommonMethods implements Initializa
 
     @FXML
     private void save(ActionEvent event) throws ClassNotFoundException, JRException, SQLException {
-        try {
-            boolean leval01 = leval_01;
-            boolean leval02 = leval_02;
-            boolean leval03 = leval_03;
-            String plNIC = txtNIC.getText();
-            String competitionID = cobCompetitionID.getSelectionModel().getSelectedItem();
+        if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtNIC.getText()).matches()) {
 
-            PlayersLevalsDTO players = new PlayersLevalsDTO();
-            players.setPlNIC(plNIC);
-            players.setC_ID(competitionID);
-            players.setLeval_01(leval01);
-            players.setLeval_02(leval02);
-            players.setLeval_03(leval03);
+            try {
+                boolean leval01 = leval_01;
+                boolean leval02 = leval_02;
+                boolean leval03 = leval_03;
+                String plNIC = txtNIC.getText();
+                String competitionID = cobCompetitionID.getSelectionModel().getSelectedItem();
 
-            boolean addCom = PlayersLevalsController.savePlayersLevals(players);
+                PlayersLevalsDTO players = new PlayersLevalsDTO();
+                players.setPlNIC(plNIC);
+                players.setC_ID(competitionID);
+                players.setLeval_01(leval01);
+                players.setLeval_02(leval02);
+                players.setLeval_03(leval03);
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                boolean addCom = PlayersLevalsController.savePlayersLevals(players);
+
+                if (addCom) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                    a.show();
+
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+                    a.show();
+                }
+
+            } catch (NumberFormatException e) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
 
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK);
+            } catch (Exception ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
             }
 
-        } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
-            a.show();
+            InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/PlayersLevals.jasper");
+            Connection connection = DBConnection.getInstance().getConnection();
+            HashMap map = new HashMap();
+            map.put("pnic", txtNIC.getText());
+            map.put("cid", cobCompetitionID.getSelectionModel().getSelectedItem());
+            JasperPrint print = JasperFillManager.fillReport(is, map, connection);
+            JasperViewer.viewReport(print, false);
 
-        } catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+            clearAll();
+
+            txtNIC.requestFocus();
+        } else {
+            txtNIC.requestFocus();
+            Alert a = new Alert(Alert.AlertType.ERROR, "Input Player NIC format is Invalid", ButtonType.OK);
             a.show();
         }
-
-        InputStream is = this.getClass().getResourceAsStream("/lk/betting/reports/PlayersLevals.jasper");
-        Connection connection = DBConnection.getInstance().getConnection();
-        HashMap map = new HashMap();
-        map.put("pnic", txtNIC.getText());
-        map.put("cid", cobCompetitionID.getSelectionModel().getSelectedItem());
-        JasperPrint print = JasperFillManager.fillReport(is, map, connection);
-        JasperViewer.viewReport(print, false);
-
-        clearAll();
-
-        txtNIC.requestFocus();
     }
 
     @FXML

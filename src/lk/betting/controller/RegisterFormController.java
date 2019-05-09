@@ -222,22 +222,42 @@ public class RegisterFormController extends CommonMethods implements Initializab
         try {
             String juName = txtJuName.getText();
             String juNIC = txtJuNIC.getText();
-            String juMobile = txtJuMobile.getText();
-            String juEmail = txtJuEmail.getText();
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(juNIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(juNIC).matches()) {
+                String juMobile = txtJuMobile.getText();
+                if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(txtJuMobile.getText()).matches()) {
+                    String juEmail = txtJuEmail.getText();
+                    if (Pattern.compile("[a-z0-9.]{1,}[@]{1}[a-z]{1,}[.]{1}(com)$").matcher(txtJuEmail.getText()).matches()) {
+                        JudgersDTO judgers = new JudgersDTO();
+                        judgers.setJuName(juName);
+                        judgers.setJuNIC(juNIC);
+                        judgers.setJuEmail(juEmail);
+                        judgers.setJuMobile(juMobile);
 
-            JudgersDTO judgers = new JudgersDTO();
-            judgers.setJuName(juName);
-            judgers.setJuNIC(juNIC);
-            judgers.setJuEmail(juEmail);
-            judgers.setJuMobile(juMobile);
+                        boolean addCom = RegisterFormController.registerJudgers(judgers);
 
-            boolean addCom = RegisterFormController.registerJudgers(judgers);
+                        if (addCom) {
+                            Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                            a.show();
+                        } else {
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                            a.show();
+                        }
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
+                    } else {
+                        txtJuEmail.requestFocus();
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Input Email Address format is Invalid", ButtonType.OK);
+                        a.show();
+                    }
+
+                } else {
+                    txtJuMobile.requestFocus();
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
+                    a.show();
+                }
+
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtJuNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Judjer's NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
 
@@ -298,7 +318,6 @@ public class RegisterFormController extends CommonMethods implements Initializab
     private void plBOD(ActionEvent event) throws ParseException {
 
         String bod = txtplBOD.getText();
-        System.out.println(bod);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
         SimpleDateFormat formatt = new SimpleDateFormat("yyyy");
@@ -351,31 +370,76 @@ public class RegisterFormController extends CommonMethods implements Initializab
         try {
             String plName = txtplName.getText();
             String plNIC = txtPlNIC.getText();
-            String plMobile = txtplMobile.getText();
-            String plAddress = txtplAddress.getText();
-            String plBOD = txtplBOD.getText();
-            String plage = txtplAge.getText();
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(plNIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(plNIC).matches()) {
+                String plMobile = txtplMobile.getText();
+                if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(plMobile).matches()) {
+                    String plAddress = txtplAddress.getText();
+                    String plBOD = txtplBOD.getText();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+                    SimpleDateFormat formatt = new SimpleDateFormat("yyyy");
+                    String dateInString = plBOD;
+                    try {
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+                        Date date = formatter.parse(dateInString);
+                        System.out.println(date);
+                        System.out.println(formatter.format(date));
 
-            Date date = formatter.parse(plBOD);
+                        int bodyear = Integer.parseInt(formatt.format(date));
 
-            PlayersDTO players = new PlayersDTO();
-            players.setPlName(plName);
-            players.setPlNIC(plNIC);
-            players.setPlAddress(plAddress);
-            players.setPlMobile(plMobile);
-            players.setPlBOD(date);
-            players.setPlAge(plage);
+                        Calendar calOne = Calendar.getInstance();
+                        int currentyear = calOne.get(Calendar.YEAR);
 
-            boolean addCom = RegisterFormController.registerPlayers(players);
+                        int age = currentyear - bodyear;
+                        if (age >= 18) {
+                            txtplAge.setText(age + "");
+                        } else {
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Your age is not enough...!!!!", ButtonType.OK);
+                            a.show();
+                        }
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (Pattern.compile("^[0-9]{4}[.]{1}[0-9]{2}[.]{1}[0-9]{2}$").matcher(plBOD).matches()) {
+                        String plage = txtplAge.getText();
+                        SimpleDateFormat formatte = new SimpleDateFormat("yyyy.MM.dd");
+
+                        Date date = formatte.parse(plBOD);
+
+                        PlayersDTO players = new PlayersDTO();
+                        players.setPlName(plName);
+                        players.setPlNIC(plNIC);
+                        players.setPlAddress(plAddress);
+                        players.setPlMobile(plMobile);
+                        players.setPlBOD(date);
+                        players.setPlAge(plage);
+
+                        boolean addCom = RegisterFormController.registerPlayers(players);
+
+                        if (addCom) {
+                            Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                            a.show();
+
+                        } else {
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                            a.show();
+                        }
+
+                    } else {
+                        txtplBOD.requestFocus();
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Input BOD format is Invalid->[YYYY.MM.DD]", ButtonType.OK);
+                        a.show();
+                    }
+
+                } else {
+                    txtplMobile.requestFocus();
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
+                    a.show();
+                }
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtPlNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Player's NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
 
@@ -400,12 +464,14 @@ public class RegisterFormController extends CommonMethods implements Initializab
     }
 
     @FXML
-    private void btname(ActionEvent event) {
+    private void btname(ActionEvent event
+    ) {
         txtbtNIC.requestFocus();
     }
 
     @FXML
-    private void btNIC(ActionEvent event) {
+    private void btNIC(ActionEvent event
+    ) {
         if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtbtNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtbtNIC.getText()).matches()) {
             txtbtAddress.requestFocus();
         } else {
@@ -416,12 +482,14 @@ public class RegisterFormController extends CommonMethods implements Initializab
     }
 
     @FXML
-    private void btAddress(ActionEvent event) {
+    private void btAddress(ActionEvent event
+    ) {
         txtbtMobile.requestFocus();
     }
 
     @FXML
-    private void btMobile(ActionEvent event) {
+    private void btMobile(ActionEvent event
+    ) {
         if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(txtbtMobile.getText()).matches()) {
             txtbtBOD.requestFocus();
         } else {
@@ -433,10 +501,10 @@ public class RegisterFormController extends CommonMethods implements Initializab
     }
 
     @FXML
-    private void btBOD(ActionEvent event) {
+    private void btBOD(ActionEvent event
+    ) {
 
         String bod = txtbtBOD.getText();
-        System.out.println(bod);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
         SimpleDateFormat formatt = new SimpleDateFormat("yyyy");
@@ -473,7 +541,8 @@ public class RegisterFormController extends CommonMethods implements Initializab
     }
 
     @FXML
-    private void btAge(ActionEvent event) {
+    private void btAge(ActionEvent event
+    ) {
     }
 
     static RegisterBettersBO bobt = (RegisterBettersBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.REGISTERBETTERS);
@@ -488,31 +557,78 @@ public class RegisterFormController extends CommonMethods implements Initializab
         try {
             String btName = txtbtName.getText();
             String btNIC = txtbtNIC.getText();
-            String btMobile = txtbtMobile.getText();
-            String btAddress = txtbtAddress.getText();
-            String btBOD = txtbtBOD.getText();
-            String btage = txtbtAge.getText();
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtbtNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtbtNIC.getText()).matches()) {
+                String btMobile = txtbtMobile.getText();
+                if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(txtbtMobile.getText()).matches()) {
+                    String btAddress = txtbtAddress.getText();
+                    String btBOD = txtbtBOD.getText();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+                    SimpleDateFormat formatt = new SimpleDateFormat("yyyy");
+                    String dateInString = btBOD;
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+                    try {
 
-            Date date = formatter.parse(btBOD);
+                        Date date = formatter.parse(dateInString);
+                        System.out.println(date);
+                        System.out.println(formatter.format(date));
+                        int bodyear = Integer.parseInt(formatt.format(date));
 
-            BettersDTO betters = new BettersDTO();
-            betters.setBtName(btName);
-            betters.setBtNIC(btNIC);
-            betters.setBtAddress(btAddress);
-            betters.setBtMobile(btMobile);
-            betters.setBtBOD(date);
-            betters.setBtAge(btage);
+                        Calendar calOne = Calendar.getInstance();
+                        int currentyear = calOne.get(Calendar.YEAR);
 
-            boolean addCom = RegisterFormController.registerBetters(betters);
+                        int age = currentyear - bodyear;
+                        if (age >= 18) {
+                            txtbtAge.setText(age + "");
+                        } else {
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Your age is not enough...!!!!", ButtonType.OK);
+                            a.show();
+                        }
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (Pattern.compile("^[0-9]{4}[.]{1}[0-9]{2}[.]{1}[0-9]{2}$").matcher(txtbtBOD.getText()).matches()) {
+
+                        String btage = txtbtAge.getText();
+
+                        SimpleDateFormat formatte = new SimpleDateFormat("yyyy.MM.dd");
+
+                        Date date = formatte.parse(btBOD);
+
+                        BettersDTO betters = new BettersDTO();
+                        betters.setBtName(btName);
+                        betters.setBtNIC(btNIC);
+                        betters.setBtAddress(btAddress);
+                        betters.setBtMobile(btMobile);
+                        betters.setBtBOD(date);
+                        betters.setBtAge(btage);
+
+                        boolean addCom = RegisterFormController.registerBetters(betters);
+
+                        if (addCom) {
+                            Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                            a.show();
+
+                        } else {
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                            a.show();
+                        }
+
+                    } else {
+                        txtbtBOD.requestFocus();
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Input BOD format is Invalid->[YYYY.MM.DD]", ButtonType.OK);
+                        a.show();
+                    }
+
+                } else {
+                    txtbtMobile.requestFocus();
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
+                    a.show();
+                }
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtbtNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Better's NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
 
@@ -705,7 +821,7 @@ public class RegisterFormController extends CommonMethods implements Initializab
             Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
             a.show();
         }
-
+        clearAllJudger();
     }
 
     @FXML

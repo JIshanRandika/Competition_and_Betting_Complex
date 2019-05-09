@@ -168,27 +168,40 @@ public class SpectatorFormController extends CommonMethods implements Initializa
 
     @FXML
     private void register(ActionEvent event) throws ClassNotFoundException, SQLException, JRException {
-
         try {
             String spectatorID = txtSpectatorID.getText();
-            String spectatorName = txtSpectatorname.getText();
-            String spectatorAddress = txtSpectatorAddress.getText();
-            String spectatorMobile = txtSpectatorMobile.getText();
+            if (Pattern.compile("^[S]{1}[0-9]{1,}$").matcher(spectatorID).matches()) {
+                String spectatorName = txtSpectatorname.getText();
+                String spectatorAddress = txtSpectatorAddress.getText();
+                String spectatorMobile = txtSpectatorMobile.getText();
+                if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(spectatorMobile).matches()) {
 
-            SpectatorDTO spectator = new SpectatorDTO();
-            spectator.setSpectatorID(spectatorID);
-            spectator.setSpectatorName(spectatorName);
-            spectator.setSpectatorAddress(spectatorAddress);
-            spectator.setSpectatorMobile(spectatorMobile);
+                    SpectatorDTO spectator = new SpectatorDTO();
+                    spectator.setSpectatorID(spectatorID);
+                    spectator.setSpectatorName(spectatorName);
+                    spectator.setSpectatorAddress(spectatorAddress);
+                    spectator.setSpectatorMobile(spectatorMobile);
 
-            boolean addCom = SpectatorFormController.registerSpectator(spectator);
+                    boolean addCom = SpectatorFormController.registerSpectator(spectator);
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
+                    if (addCom) {
+                        Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                        a.show();
+
+                    } else {
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                        a.show();
+                    }
+
+                } else {
+                    txtSpectatorMobile.requestFocus();
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
+                    a.show();
+                }
 
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtSpectatorID.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input SpectatorID format is Invalid", ButtonType.OK);
                 a.show();
             }
 

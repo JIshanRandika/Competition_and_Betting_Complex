@@ -27,7 +27,7 @@
          </image>
       </ImageView>
       <JFXDatePicker fx:id="datePicker" defaultColor="#005f94" layoutX="101.0" layoutY="135.0" onAction="#datePicker" prefHeight="25.0" prefWidth="154.0" />
-      <JFXTimePicker fx:id="timePicker" defaultColor="#005f94" layoutX="315.0" layoutY="135.0" onAction="#timePicker" prefHeight="25.0" prefWidth="154.0" />
+      <JFXTimePicker fx:id="timePicker" defaultColor="#005f94" layoutX="296.0" layoutY="135.0" onAction="#timePicker" prefHeight="31.0" prefWidth="147.0" />
       <JFXButton fx:id="btnCreateBet" layoutX="83.0" layoutY="373.0" onAction="#CreateBet" prefHeight="30.0" prefWidth="372.0" text="Create Bet">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -41,24 +41,24 @@
             </RadialGradient>
          </ripplerFill>
       </JFXButton>
-      <Label layoutX="82.0" layoutY="195.0" prefHeight="36.0" prefWidth="94.0" text="Pool No    ">
+      <Label layoutX="103.0" layoutY="195.0" prefHeight="36.0" prefWidth="94.0" text="Pool No    ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="255.0" layoutY="195.0" prefHeight="36.0" prefWidth="202.0" text="Number Of Tracks">
+      <Label layoutX="299.0" layoutY="195.0" prefHeight="36.0" prefWidth="164.0" text="Number Of Tracks">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtpoolno" layoutX="104.0" layoutY="222.0" onAction="#poolNo" prefHeight="25.0" prefWidth="120.0" />
-      <JFXTextField fx:id="txtTracks" layoutX="316.0" layoutY="222.0" onAction="#tracks" prefHeight="25.0" prefWidth="120.0" />
-      <Label layoutX="103.0" layoutY="73.0" prefHeight="36.0" prefWidth="221.0" text="Competition ID     :">
+      <JFXTextField fx:id="txtpoolno" layoutX="105.0" layoutY="222.0" onAction="#poolNo" prefHeight="31.0" prefWidth="113.0" />
+      <JFXTextField fx:id="txtTracks" layoutX="300.0" layoutY="222.0" onAction="#tracks" prefHeight="31.0" prefWidth="113.0" />
+      <Label layoutX="103.0" layoutY="65.0" prefHeight="36.0" prefWidth="221.0" text="Competition ID     :">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtcomID" layoutX="317.0" layoutY="72.0" onAction="#comID" prefHeight="25.0" prefWidth="105.0" />
+      <JFXTextField fx:id="txtcomID" layoutX="317.0" layoutY="64.0" onAction="#comID" prefHeight="25.0" prefWidth="105.0" />
       <JFXTextField fx:id="txtBetID" layoutX="273.0" layoutY="426.0" prefHeight="25.0" prefWidth="105.0" />
       <Label layoutX="158.0" layoutY="423.0" prefHeight="36.0" prefWidth="113.0" text="Bet ID     :">
          <font>
@@ -143,5 +143,15 @@
             <Image url="@../image/logo.png" />
          </image>
       </ImageView>
+      <Label layoutX="100.0" layoutY="109.0" prefHeight="36.0" prefWidth="45.0" text="Date">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="292.0" layoutY="109.0" prefHeight="36.0" prefWidth="45.0" text="Time">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -257,6 +257,7 @@ public class UsersFormController extends CommonMethods implements Initializable 
                 ;
                 loadAll();
                 clearAll();
+                loadOrdeID();
             } else {
                 Alert a = new Alert(Alert.AlertType.WARNING, "User Not Updated...!", ButtonType.OK);
                 a.show();
@@ -278,46 +279,74 @@ public class UsersFormController extends CommonMethods implements Initializable 
             String userID = lblID.getText();
             String userName = txtUserName.getText();
             String u_NIC = txtNIC.getText();
-            String mobile_No = txtUserMobile.getText();
-            String u_Email = txtUserEmail.getText();
-            String u_Address = txtUserAddress.getText();
+            if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(u_NIC).matches() || Pattern.compile("^[0-9]{11}$").matcher(u_NIC).matches()) {
+                String mobile_No = txtUserMobile.getText();
+                if (Pattern.compile("^[+]{1}(94)[-]{1}[0-9]{9}$").matcher(mobile_No).matches()) {
+                    String u_Email = txtUserEmail.getText();
+                    if (Pattern.compile("[a-z0-9.]{1,}[@]{1}[a-z]{1,}[.]{1}(com)$").matcher(txtUserEmail.getText()).matches()) {
+                        String u_Address = txtUserAddress.getText();
+                        String bod = txtUserBOD.getText();
+                        if (Pattern.compile("^[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$").matcher(txtUserBOD.getText()).matches()) {
 
-            String bod = txtUserBOD.getText();
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            Date date = formatter.parse(bod);
 
-            Date date = formatter.parse(bod);
+                            System.out.println(formatter.format(date));
+                            if (txtUserPassword.getText().equals(txtUserComfirmPassword.getText())) {
+                                password = txtUserPassword.getText();
+                            } else {
+                                Alert a = new Alert(Alert.AlertType.ERROR, "Not compatible password", ButtonType.OK);
+                                a.show();
 
-            System.out.println(formatter.format(date));
-            if (txtUserPassword.getText().equals(txtUserComfirmPassword.getText())) {
-                password = txtUserPassword.getText();
+                            }
+
+                            UserDTO user = new UserDTO();
+
+                            user.setUserID(userID);
+                            user.setU_Name(userName);
+                            user.setU_NIC(u_NIC);
+                            user.setMobile_No(mobile_No);
+                            user.setU_Email(u_Email);
+                            user.setU_Address(u_Address);
+                            user.setbOD(date);
+                            user.setPassword(password);
+                            user.setImage(imgPath);
+
+                            boolean regUsers = UsersFormController.registerUser(user);
+
+                            if (regUsers) {
+                                loadAll();
+                                clearAll();
+                                loadOrdeID();
+                                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                                a.show();
+                            } else {
+                                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                                a.show();
+                            }
+
+                        } else {
+                            txtUserBOD.requestFocus();
+                            Alert a = new Alert(Alert.AlertType.ERROR, "Input BOD format is Invalid->[YYYY-MM-DD]", ButtonType.OK);
+                            a.show();
+                        }
+
+                    } else {
+                        txtUserEmail.requestFocus();
+                        Alert a = new Alert(Alert.AlertType.ERROR, "Input Email Address format is Invalid", ButtonType.OK);
+                        a.show();
+                    }
+
+                } else {
+                    txtUserMobile.requestFocus();
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Input Mobile Number format is Invalid", ButtonType.OK);
+                    a.show();
+                }
+
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Not compatible password", ButtonType.OK);
-                a.show();
-
-            }
-
-            UserDTO user = new UserDTO();
-
-            user.setUserID(userID);
-            user.setU_Name(userName);
-            user.setU_NIC(u_NIC);
-            user.setMobile_No(mobile_No);
-            user.setU_Email(u_Email);
-            user.setU_Address(u_Address);
-            user.setbOD(date);
-            user.setPassword(password);
-            user.setImage(imgPath);
-
-            boolean regUsers = UsersFormController.registerUser(user);
-
-            if (regUsers) {
-                loadAll();
-                clearAll();
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
-                a.show();
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                txtNIC.requestFocus();
+                Alert a = new Alert(Alert.AlertType.ERROR, "Input Leval-01-Player's NIC format is Invalid", ButtonType.OK);
                 a.show();
             }
 

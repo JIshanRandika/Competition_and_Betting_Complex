@@ -16,6 +16,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Random;
@@ -32,6 +33,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +42,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import lk.betting.bo.BOFactory;
 import lk.betting.bo.custom.CreateBetBO;
@@ -109,7 +113,7 @@ public class CreateCompetitionFormController extends CommonMethods implements In
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         moveWindow(titleBar);
-        
+
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(20));
         transition.setToX(700);
@@ -129,6 +133,22 @@ public class CreateCompetitionFormController extends CommonMethods implements In
                 txtcomID.requestFocus();
             }
         });
+        Callback<DatePicker, DateCell> callB = new Callback<DatePicker, DateCell>() {
+               @Override
+               public DateCell call(final DatePicker param) {
+                   return new DateCell() {
+                       @Override
+                       public void updateItem(LocalDate item, boolean empty) {
+                           super.updateItem(item, empty); //To change body of generated methods, choose Tools | Templates.
+                           LocalDate today = LocalDate.now();
+                           setDisable(empty || item.compareTo(today) < 0);
+                       }
+
+                   };
+               }
+
+           };
+           datePicker.setDayCellFactory(callB);
     }
 
     static CreateCompetitionBO bo = (CreateCompetitionBO) BOFactory.getInstace().getBO(BOFactory.BOTypes.CREATECOMPETITION);
@@ -142,7 +162,6 @@ public class CreateCompetitionFormController extends CommonMethods implements In
     public static boolean createBet(CreateBetDTO crbet) throws SQLException, ClassNotFoundException, Exception {
         return bobet.createBet(crbet);
     }
-
 
     @FXML
     private void min(ActionEvent event) {
@@ -204,45 +223,51 @@ public class CreateCompetitionFormController extends CommonMethods implements In
 
     @FXML
     private void createCompetition(ActionEvent event) {
+        if (Pattern.compile("^[C]{1}[0-9]{1,}$").matcher(txtcomID.getText()).matches()) {
 
-        try {
-            String competitionID = txtcomID.getText();
-            String competitionDate = datePicker.getValue().toString();
-            String competitionTime = timePicker.getValue().toString();
-            String poolNo = txtpoolno.getText();
-            String tracks = txtTracks.getText();
+            try {
+                String competitionID = txtcomID.getText();
+                String competitionDate = datePicker.getValue().toString();
+                String competitionTime = timePicker.getValue().toString();
+                String poolNo = txtpoolno.getText();
+                String tracks = txtTracks.getText();
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            Date date = formatter.parse(competitionDate);
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = formatter.parse(competitionDate);
 
-            LocalTime localTime = LocalTime.parse(competitionTime);
+                LocalTime localTime = LocalTime.parse(competitionTime);
 
-            CreateCompetitionDTO com = new CreateCompetitionDTO();
-            com.setCompetitionID(competitionID);
-            com.setCompetitionDate(date);
-            com.setCompetitionTime(competitionTime);
-            com.setPoolNo(poolNo);
-            com.setTracks(tracks);
+                CreateCompetitionDTO com = new CreateCompetitionDTO();
+                com.setCompetitionID(competitionID);
+                com.setCompetitionDate(date);
+                com.setCompetitionTime(competitionTime);
+                com.setPoolNo(poolNo);
+                com.setTracks(tracks);
 
-            boolean addCom = CreateCompetitionFormController.createCompetition(com);
+                boolean addCom = CreateCompetitionFormController.createCompetition(com);
 
-            if (addCom) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                if (addCom) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                    a.show();
+
+                } else {
+                }
+
+            } catch (NumberFormatException e) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
                 a.show();
 
-            } else {
+            } catch (Exception ex) {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+                a.show();
             }
+            btnCreateBet.requestFocus();
 
-        } catch (NumberFormatException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
-            a.show();
-
-        } catch (Exception ex) {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Please Enter Details Correctly", ButtonType.OK);
+        } else {
+            txtcomID.requestFocus();
+            Alert a = new Alert(Alert.AlertType.ERROR, "Input CompetitionID format is Invalid=>Cxxxxx x=0-9", ButtonType.OK);
             a.show();
         }
-
-        btnCreateBet.requestFocus();
     }
 
     @FXML
@@ -271,11 +296,10 @@ public class CreateCompetitionFormController extends CommonMethods implements In
             datePicker.requestFocus();
         } else {
             txtcomID.requestFocus();
-            Alert a = new Alert(Alert.AlertType.ERROR, "Input CompetitionID format is Invalid", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Input CompetitionID format is Invalid=>Cxxxxx x=0-9", ButtonType.OK);
             a.show();
         }
     }
-
 
     @FXML
     private void logo(MouseEvent event) throws IOException {

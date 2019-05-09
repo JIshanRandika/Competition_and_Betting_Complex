@@ -24,30 +24,30 @@
             <Image url="@../image/LoginPage.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="148.0" layoutY="109.0" prefHeight="27.0" prefWidth="153.0" text="Competition ID  ">
+      <Label layoutX="148.0" layoutY="102.0" prefHeight="27.0" prefWidth="153.0" text="Competition ID  ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cobCompetitionID" layoutX="205.0" layoutY="129.0" onKeyPressed="#addCompetitionID" prefHeight="25.0" prefWidth="144.0" />
-      <Label layoutX="150.0" layoutY="187.0" prefHeight="27.0" prefWidth="222.0" text="Leval-01-Player's NIC   ">
+      <JFXComboBox fx:id="cobCompetitionID" layoutX="205.0" layoutY="122.0" onKeyPressed="#addCompetitionID" prefHeight="25.0" prefWidth="144.0" />
+      <Label layoutX="150.0" layoutY="180.0" prefHeight="27.0" prefWidth="222.0" text="Leval-01-Player's NIC   ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="150.0" layoutY="255.0" prefHeight="27.0" prefWidth="222.0" text="Leval-02-Player's NIC    ">
+      <Label layoutX="150.0" layoutY="248.0" prefHeight="27.0" prefWidth="222.0" text="Leval-02-Player's NIC    ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="150.0" layoutY="324.0" prefHeight="27.0" prefWidth="222.0" text="Leval-03-Player's NIC    ">
+      <Label layoutX="150.0" layoutY="317.0" prefHeight="27.0" prefWidth="222.0" text="Leval-03-Player's NIC    ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtLeval_01_PlNIC" layoutX="219.0" layoutY="208.0" onAction="#leval_01_PlNIC" prefHeight="25.0" prefWidth="153.0" />
-      <JFXTextField fx:id="txtLeval_02_PlNIC" layoutX="222.0" layoutY="276.0" onAction="#leval_02_PlNIC" prefHeight="25.0" prefWidth="153.0" />
-      <JFXTextField fx:id="txtLeval_03_PlNIC" layoutX="224.0" layoutY="345.0" onAction="#leval_03_PlNIC" prefHeight="25.0" prefWidth="153.0" />
+      <JFXTextField fx:id="txtLeval_01_PlNIC" layoutX="219.0" layoutY="201.0" onAction="#leval_01_PlNIC" prefHeight="25.0" prefWidth="153.0" />
+      <JFXTextField fx:id="txtLeval_02_PlNIC" layoutX="222.0" layoutY="269.0" onAction="#leval_02_PlNIC" prefHeight="25.0" prefWidth="153.0" />
+      <JFXTextField fx:id="txtLeval_03_PlNIC" layoutX="224.0" layoutY="338.0" onAction="#leval_03_PlNIC" prefHeight="25.0" prefWidth="153.0" />
       <JFXButton fx:id="btnSave" layoutX="63.0" layoutY="420.0" onAction="#save" prefHeight="33.0" prefWidth="396.0" text="Save">
          <font>
             <Font name="System Bold" size="14.0" />

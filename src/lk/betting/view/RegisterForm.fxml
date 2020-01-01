@@ -201,12 +201,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="156.0" layoutY="18.0" prefHeight="27.0" prefWidth="97.0" text="Name  ">
+                        <Label layoutX="155.0" layoutY="103.0" prefHeight="27.0" prefWidth="97.0" text="Name  ">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutX="157.0" layoutY="96.0" prefHeight="27.0" prefWidth="58.0" text="NIC  ">
+                        <Label layoutX="154.0" layoutY="28.0" prefHeight="27.0" prefWidth="58.0" text="NIC  ">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
@@ -221,8 +221,8 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="txtJuNIC" layoutX="155.0" layoutY="116.0" onKeyPressed="#jadgeNIC" prefHeight="44.0" prefWidth="321.0" />
-                        <JFXTextField fx:id="txtJuName" layoutX="157.0" layoutY="38.0" onAction="#juName" prefHeight="44.0" prefWidth="322.0" />
+                        <JFXTextField fx:id="txtJuNIC" layoutX="160.0" layoutY="49.0" onKeyPressed="#jadgeNIC" prefHeight="44.0" prefWidth="321.0" promptText="use space for search" />
+                        <JFXTextField fx:id="txtJuName" layoutX="160.0" layoutY="125.0" onAction="#juName" prefHeight="44.0" prefWidth="322.0" />
                         <JFXTextField fx:id="txtJuMobile" layoutX="155.0" layoutY="203.0" onAction="#juMobile" prefHeight="44.0" prefWidth="324.0" />
                         <JFXTextField fx:id="txtJuEmail" layoutX="154.0" layoutY="295.0" onAction="#juEmail" prefHeight="44.0" prefWidth="324.0" />
                         <JFXButton fx:id="btnJuRegister" layoutX="74.0" layoutY="360.0" onAction="#juregister" prefHeight="44.0" prefWidth="218.0" text="Register">

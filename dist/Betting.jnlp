@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Betting.jar" size="1216848" download="eager" />
+    <jar href="Betting.jar" size="1216864" download="eager" />
     <jar href="lib\RegEx_Simulator.jar" size="22213" download="eager" />
     <jar href="lib\com.lowagie.text-2.1.7.jar" size="1782376" download="eager" />
     <jar href="lib\commons-beanutils-1.8.3.jar" size="232019" download="eager" />

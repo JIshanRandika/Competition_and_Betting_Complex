@@ -184,7 +184,7 @@ public class RegisterFormController extends CommonMethods implements Initializab
 
     @FXML
     private void juName(ActionEvent event) {
-        txtJuNIC.requestFocus();
+        txtJuMobile.requestFocus();
     }
 
     @FXML
@@ -773,7 +773,7 @@ public class RegisterFormController extends CommonMethods implements Initializab
         }
         if (event.getCode() == KeyCode.ENTER) {
             if (Pattern.compile("^[0-9]{9}[V]{1}$").matcher(txtJuNIC.getText()).matches() || Pattern.compile("^[0-9]{11}$").matcher(txtJuNIC.getText()).matches()) {
-                txtJuMobile.requestFocus();
+                txtJuName.requestFocus();
 
             } else {
                 txtJuNIC.requestFocus();
